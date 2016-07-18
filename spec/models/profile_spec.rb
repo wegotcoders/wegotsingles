@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Profile, type: :model do
 	
-	let(:profile){Profile.create!(location: 'EN11 8BX')}
+	let(:profile1){Profile.create!(location: 'EN11 8BX', latitude: , longitude: )}
+	let(:profile2){Profile.create!(location: 'SG12', latitude: , longitude: )}
 
-  describe "geocoding" do 
-  	it "automatically geocodes the model on save" do 
-  		expect(profile.lat).to be_within(0.000001).of( 51.7557328)
-  		expect(profile.lng.to_f).to eq(-0.0101774)
+  describe "searching for locational matches" do 
+  	it "should return matches within 20 miles" do 
+  		expect(profile1.latitude).to be_within(0.000001).of(51.7557328)
   	end
   
   end
