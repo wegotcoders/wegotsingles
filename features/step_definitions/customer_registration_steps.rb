@@ -10,6 +10,9 @@ When(/^they provide an email address$/) do
   fill_in "Email",  with: Faker::Internet.email
 end
 
+When(/^they provide a date of birth$/) do
+  fill_in "Date of Birth", with: Date.current()
+end
 
 When(/^they provide a password$/) do
   fill_in "Password", with: "password"

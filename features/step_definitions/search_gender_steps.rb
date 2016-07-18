@@ -1,8 +1,8 @@
-Given(/^they are registered$/) do
+Given(/^that they are registered$/) do
   Profile.new(postcode: 'EN118BX', latitude: '51.76000699999999', longitude: '-0.015042')
 end
 
-Given(/^they have signed in$/) do
+Given(/^that they have signed in$/) do
   # to be done via Devise later
 end
 

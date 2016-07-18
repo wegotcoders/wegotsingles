@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :username
+    [:username, :date_of_birth].each do |field|
+      devise_parameter_sanitizer.for(:sign_up) << field
+    end
   end
 end
