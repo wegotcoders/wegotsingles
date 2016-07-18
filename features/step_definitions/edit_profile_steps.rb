@@ -18,9 +18,10 @@ When(/^they visit the edit profile page$/) do
 end
 
 When(/^they edit their biography$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  fill_in "Biography", with: Faker::Lorem.paragraph
+  click_on "Update Profile"
 end
 
 Then(/^their changes are saved$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_content("Profile was updated")
 end
