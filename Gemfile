@@ -9,6 +9,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'spring', group: :development
 gem 'inuit-rails', git: 'https://github.com/wegotcoders/inuit-rails'
+gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -19,4 +20,5 @@ group :development, :test do
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'factory_girl_rails'
 end
