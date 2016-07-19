@@ -2,6 +2,8 @@ class ProfilesController < ApplicationController
   before_action :set_profile, :only => [:update, :show, :edit]
 
   def update
+    @profile.update(profile_params)
+
     if @profile.save
       flash[:notice] = "Profile was updated"
       redirect_to profile_path(@profile)
@@ -26,7 +28,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:biography, :drinks)
+    params.require(:profile).permit(:biography, :drinks, :weight)
   end
 
   def set_profile

@@ -2,7 +2,7 @@ Given(/^that they are registered$/) do
   @profile = Profile.create!()
 end
 
-Given(/^they have signed in$/) do
+Given(/^they sign in$/) do
   visit new_customer_session_path
   fill_in "Username", with: "fred"
   fill_in "Password", with: "password"
@@ -18,7 +18,6 @@ When(/^they enter a weight$/) do
 end
 
 When(/^they update their profile$/) do
-  save_and_open_page
    click_on "Update Profile"
 end
 
