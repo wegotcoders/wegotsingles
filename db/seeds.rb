@@ -1,7 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# SEEDING THE PROFILES FOR DISPLAY OF GENDER SEARCH STORY
+genders = %w(male female other)
+
+20.times do 
+  Profile.find_or_create_by(name: Faker::Name.first_name, gender: genders[Random.new.rand(genders.length)])
+end
+
