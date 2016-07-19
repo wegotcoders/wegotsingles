@@ -8,7 +8,7 @@ Given(/^they have signed in$/) do
 end
 
 Given(/^they are on their dashboard page$/) do
-  visit profiles_show_path
+  visit profile_path(@profile1)
 end
 
 When(/^they select a gender type$/) do
