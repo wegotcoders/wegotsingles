@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  get 'profiles/show'
 
-  get 'profiles/search'
+  resources :profiles do 
+  	collection do 
+  		get :search
+  	end 
+  end
   
   devise_for :customers
   root 'pages#home'
+
 end
