@@ -1,0 +1,10 @@
+<h1> Edit Profile</h1>
+
+<%= form_for @profile do |f| %>
+
+  <%= f.label :weight %>
+  <%= f.number_field :weight %>
+
+  <%= f.submit %>
+
+<% end %>
