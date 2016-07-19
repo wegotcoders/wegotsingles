@@ -21,5 +21,5 @@ When(/^they click sign up$/) do
 end
 
 Then(/^they are registered$/) do
-  expect(page).to have_content("Welcome! You have signed up successfully.")
+  expect(page).to have_content("A message with a confirmation link")
 end
