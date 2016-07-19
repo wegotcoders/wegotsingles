@@ -14,13 +14,14 @@ Given(/^they are on their edit profile page$/) do
 end
 
 When(/^they enter a weight$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  fill_in "Weight", with: 90
 end
 
 When(/^they update their profile$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  save_and_open_page
+   click_on "Update Profile"
 end
 
 Then(/^it displays the new weight$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_content("90")
 end
