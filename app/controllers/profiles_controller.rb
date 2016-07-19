@@ -1,24 +1,8 @@
 class ProfilesController < ApplicationController
 
-  before_action :set_profile,  except: [:new, :create, :index]
-
-  def index
-    
-  end
-
-  def new
-    
-  end
+  before_action :set_profile
 
   def edit
-    
-  end
-
-  def create
-
-  end
-
-  def update
     
   end
 
@@ -26,8 +10,14 @@ class ProfilesController < ApplicationController
     
   end
 
-  def delete
-
+  def update
+    if @profile.save
+      flash[:notice] = "Profile was updated"
+      redirect_to profile_path(@profile)
+    else
+      flash[:alert] = "Your profile was not updated"
+      render :edit
+    end
   end
 
   private
