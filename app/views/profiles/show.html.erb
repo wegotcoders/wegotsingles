@@ -1,7 +1,7 @@
 <div class="wrapper">
 	<h1>Find your match!</h1>
 	<h2>Search by gender:</h2>
-	<form action="/profiles/search" method="get">
+	<%= form_tag(search_profiles_path, method: "get") do %>
 		<%= radio_button_tag(:gender, "male") %>
 		<%= label_tag(:gender_male, "Male", class: 'm-r-2') %>
 		<%= radio_button_tag(:gender, "female") %>
@@ -9,5 +9,6 @@
 		<%= radio_button_tag(:gender, "other") %>
 		<%= label_tag(:gender_other, "Other", class: 'm-r-2') %>
 		<%= submit_tag("Search", {class: 'btn brr-5 m-1'}) %>
-	</form>
+	<% end %>
+
 </div>
