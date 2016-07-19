@@ -2,14 +2,6 @@ class ProfilesController < ApplicationController
 
   before_action :set_profile
 
-  def edit
-    
-  end
-
-  def show
-    
-  end
-
   def update
     if @profile.save
       flash[:notice] = "Profile was updated"
