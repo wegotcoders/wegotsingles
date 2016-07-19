@@ -38,5 +38,13 @@ class Profile < ActiveRecord::Base
       dob.between?(value.first,value.last)
     end.keys.first.to_s
 
+  def self.convert_imperial(stones, pounds)
+    weight = (stones.to_f*14 + pounds.to_f)/2.2
+  end
+
+  def self.convert_metric(weight)
+    stones = (weight * 2.2/14).round
+    pounds = ((weight * 2.2)%14).round
+    [stones, pounds]
   end
 end

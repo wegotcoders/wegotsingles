@@ -3,7 +3,6 @@ class ProfilesController < ApplicationController
 
   def update
     @profile.update(profile_params)
-
     if @profile.save
       flash[:notice] = "Profile was updated"
       redirect_to profile_path(@profile)
