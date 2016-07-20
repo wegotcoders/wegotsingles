@@ -9,7 +9,7 @@ class Customer < ActiveRecord::Base
 
   private
     def over_eighteen
-      if self.date_of_birth.present? && self.date_of_birth > Date.today - 18.years
+      if self.date_of_birth.present? && self.date_of_birth > 18.years.ago
 	self.errors.add(:date_of_birth, "Sorry but you're too young to use this site!")
       end
     end
