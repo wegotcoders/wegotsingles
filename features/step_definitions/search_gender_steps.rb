@@ -3,10 +3,6 @@ Given(/^that they are registered$/) do
   @profile2 = Profile.create!(name: "Mary Blythe", gender:"female")
 end
 
-Given(/^they have signed in$/) do
-  # to be done via Devise later
-end
-
 Given(/^they are on their dashboard page$/) do
   visit profile_path(@profile1)
 end
