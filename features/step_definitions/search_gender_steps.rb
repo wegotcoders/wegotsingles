@@ -12,6 +12,7 @@ When(/^they select a gender type$/) do
 end
 
 When(/^they press search button$/) do
+  # save_and_open_page
   click_button('Search')
 end
 

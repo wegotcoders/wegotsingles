@@ -1,6 +1,27 @@
-<h1>Search for Matches</h1>
-
-<h2>Select proximity to you</h2>
+<h1>Find your match!</h1>
 
 
+<div class="wrapper">
 
+  <%= form_tag(search_profiles_path(id: @profile.id), method: "get") do %>
+    <h2>Search by gender:</h2>
+
+    <%= radio_button_tag(:gender, "male") %>
+    <%= label_tag(:gender_male, "Male", class: 'm-r-2') %>
+    <%= radio_button_tag(:gender, "female") %>
+    <%= label_tag(:gender_female, "Female", class: 'm-r-2') %>
+    <%= radio_button_tag(:gender, "other") %>
+    <%= label_tag(:gender_other, "Other", class: 'm-r-2') %>
+    <%= submit_tag("Search", {class: 'btn brr-5 m-1'}) %>
+
+    <h2>Select proximity to you</h2>
+
+    <%= radio_button_tag(:distance, "5") %>
+    <%= label_tag(:distance_5, "Within 5 miles", class: 'm-r-2') %>
+    <%= radio_button_tag(:distance, "15") %>
+    <%= label_tag(:within_15, "Within 15 miles", class: 'm-r-2') %>
+    <%= radio_button_tag(:distance, "150") %>
+    <%= label_tag(:within_150, "Within 150 miles", class: 'm-r-2') %>
+
+  <% end %>
+</div>

@@ -13,6 +13,10 @@ class ProfilesController < ApplicationController
 
   def search
     @results = Profile.where(gender: params[:gender])
+
+    @results = Profile.all.select do |profile|
+      @profile.distance_to(profile.postcode) <= params[:distance]
+    end
   end
 
   private
@@ -25,3 +29,4 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 end
+
