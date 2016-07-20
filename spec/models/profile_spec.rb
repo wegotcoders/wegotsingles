@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Profile, type: :model do
-  let(:profile1){Profile.create!(postcode: 'EN11 8BX', latitude: "", longitude: "" )}
-  let(:profile2){Profile.create!(postcode: 'SG12', latitude: "", longitude: "" )}
+  let(:profile1){ Profile.create!(postcode: 'EN11 8BX', latitude: "", longitude: "" ) }
+  let(:profile2){ Profile.create!(postcode: 'SG12', latitude: "", longitude: "" ) }
 	
   describe "searching for locational matches" do 
     it "should return matches within 20 miles" do 
