@@ -6,7 +6,7 @@ Background:
 
 Scenario: A customer adds an occupation to their Profile
 	When they visit the edit profile page
-	And they select an industry
+	And they select an industry 
 	When they enter an occupation
 	And they update their profile
 	Then their profile changes are saved

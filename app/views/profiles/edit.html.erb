@@ -4,7 +4,7 @@
   <fieldset class="form-group">
     <%= f.label :biography %>
     <%= f.text_area :biography, class: "form-control" %>
-  
+
     <%= f.label :weight %>
     <%= f.number_field :weight, class: "form-control" %>
 
@@ -13,7 +13,7 @@
 
     <%= f.label :drinks, "Do you drink?" %>
     <%= f.check_box :drinks, class: "form-control" %>
-    
+
     <%= f.label :desires %>
     <%= f.text_area :desires, class: "form-control" %>
 
@@ -37,7 +37,7 @@
     <%= f.label :occupation %>
     <%= f.text_field :occupation, class: "form-control" %>
 
-      <p>Unit: <%= select_tag("weight_unit" , options_for_select(['Metric', "Imperial"], "Metric") ) %> </p>
+    <p>Unit: <%= select_tag("weight_unit" , options_for_select(['Metric', "Imperial"], "Metric") ) %> </p>
 
     <div id="imperial" class="form-control">
       <dl>
@@ -55,6 +55,9 @@
       </dl>
     </div>
 
+    <%= f.label :occupation %>
+    <%= f.text_field :occupation %>
+
     <%= f.label :religious_beliefs %>
     <%= f.select :religious_beliefs,
       options_for_select(religious_beliefs,
@@ -65,5 +68,4 @@
 
     <%= f.submit %>
   </fieldset>
-
 <% end %>
