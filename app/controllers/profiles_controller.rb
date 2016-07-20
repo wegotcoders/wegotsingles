@@ -1,6 +1,10 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, :only => [:update, :show, :edit]
 
+  def create
+    binding.pry
+  end
+
   def update
     @profile.update(profile_params)
 
@@ -28,7 +32,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:biography, :drinks, :weight, :desires)
+    params.require(:profile).permit(:biography, :drinks, :weight, :desires, :postcode, :name, :gender, :latitude, :longitude)
   end
 
   def set_profile
