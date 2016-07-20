@@ -5,7 +5,7 @@ postcodes = %w(EN63AQ EN93TP EN110HD EN64NW EN55SR EN80NQ EN111HP EN36PX EN37SG 
 20.times do
   Profile.find_or_create_by(
     name: Faker::Name.first_name,
-    gender: genders[Random.new.rand(genders.length)],
-    postcode: postcodes[Random.new.rand(postcodes.length)]
+    gender: genders.sample,
+    postcode: postcodes.sample
   )
 end
