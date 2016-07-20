@@ -43,6 +43,22 @@
   <input type= "number" name="pounds"><br>
   <br>
 
+<br>
+<hr>
+  <p>Unit: <%= select_tag("weight_unit"	, options_for_select(['Metric', "Imperial"], "Metric") ) %> </p>
+  <div id="imperial">
+	 	Stones: <br>
+	  <input type= "number" name="stones"><br>
+	  Pounds: <br>
+	  <input type= "number" name="pounds"><br>
+	</div>
+	
+	<div id="metric">
+		Kilograms:<br>
+		<input type="number" name="weight">
+	</div>
+  <br>
+  
   <%= f.submit %>
 
 <% end %>

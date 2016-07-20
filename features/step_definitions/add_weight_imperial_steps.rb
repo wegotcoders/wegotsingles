@@ -14,19 +14,19 @@ Given(/^they are on the Profile page$/) do
 end
 
 When(/^they select Imperial units for weight$/) do
-  select 'Imperial', from: 'Weight-Unit'
+  select 'Imperial', from: 'weight_unit'
 end
 
 When(/^they enter weight in Stones and Pounds$/) do
-  fill_in "stones", with: 12
-  fill_in "pounds", with: 6
+  fill_in "stones", with: 15
+  fill_in "pounds", with: 10
 end
 
 When(/^they save the changes to their profile$/) do
   click_on "Update Profile"
 end
 
-Then(/^the weight is displayed in imperial units$/) do
-  expect(page).to have_content("Stones: 12")
-  expect(page).to have_content("Pounds: 6")
+Then(/^the weight is displayed in imperial units$/) do 
+  expect(page).to have_content("Stones: 15")
+  expect(page).to have_content("Pounds: 10")
 end
