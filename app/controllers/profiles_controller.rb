@@ -5,6 +5,7 @@ class ProfilesController < ApplicationController
     @profile.update(profile_params)
 
     if @profile.save
+      binding.pry
       flash[:notice] = "Profile was updated"
       redirect_to profile_path(@profile)
     else
