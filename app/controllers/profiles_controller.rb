@@ -13,10 +13,13 @@ class ProfilesController < ApplicationController
 
   def search
     @results = Profile.where(gender: params[:gender])
-
-    @results = Profile.all.select do |profile|
-      @profile.distance_to(profile.postcode) <= params[:distance]
+    @results = []
+    Profile.all.each do |profile|
+      if (@profile.distance_to(profile.postcode) <= params[:distance].to_f) && (profile != @profile)
+        @results << [profile, @profile.distance_to(profile.postcode).round(2)]
+      end
     end
+    @results.sort!{|a, b| a[1] <=> b[1]}
   end
 
   private

@@ -1,12 +1,13 @@
 <div class="wrapper">
   <h1 id="search-results">Your Matches!</h1>
-    <ul class="list-0">
-      <% @results.each do |result| %>
-        <li>
-          <%= result.name %>
-        </li>
-      <% end %>
-    </ul>
+
+  <ol class="list-0">
+    <% @results.each do |result| %>
+      <li>
+        <%= result[0].name %> is <%= result[1] %> km away!
+      </li>
+    <% end %>
+  </ol>
 </div>
 
 <%= render 'profiles/search' %>
