@@ -1,8 +1,5 @@
 Given(/^they have a profile$/) do
-  @customer = Customer.create!(username: "fred", email: "fred@bloggs.com",
-    password: "password", password_confirmation: "password",
-    confirmation_sent_at: Time.now - 1.day,
-    confirmed_at: Time.now)
+  @customer = FactoryGirl.create(:customer)
   @profile = Profile.create!(customer: @customer)
 end
 
@@ -19,6 +16,13 @@ end
 
 When(/^they edit their biography$/) do
   fill_in "Biography", with: Faker::Lorem.paragraph
+end
+
+When(/^they tick the drinks checkbox$/) do
+  check "Do you drink?"
+end
+
+When(/^they click Update Profile$/) do
   click_on "Update Profile"
 end
 
