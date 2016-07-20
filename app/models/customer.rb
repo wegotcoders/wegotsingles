@@ -4,4 +4,5 @@ class Customer < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :username, presence: true, uniqueness: true
+  validates :date_of_birth, presence: true
 end
