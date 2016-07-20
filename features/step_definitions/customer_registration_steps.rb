@@ -11,7 +11,7 @@ When(/^they provide an email address$/) do
 end
 
 When(/^they provide a date of birth$/) do
-  fill_in "Date of Birth", with: Date.current()
+  fill_in "Date of Birth", with: Date.new(1990, 05, 25)
 end
 
 When(/^they provide a password$/) do
