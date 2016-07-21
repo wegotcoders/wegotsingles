@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< 813d6f55604a39a42179a0b95601d966aad1a1e7
 ActiveRecord::Schema.define(version: 20160721230116) do
+=======
+ActiveRecord::Schema.define(version: 20160721124727) do
+>>>>>>> messaging bones started
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +45,15 @@ ActiveRecord::Schema.define(version: 20160721230116) do
   add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true, using: :btree
   add_index "customers", ["username"], name: "index_customers_on_username", unique: true, using: :btree
 
+  create_table "messages", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "customer_id"
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
@@ -51,6 +64,7 @@ ActiveRecord::Schema.define(version: 20160721230116) do
     t.string   "postcode"
     t.decimal  "latitude"
     t.decimal  "longitude"
+<<<<<<< 813d6f55604a39a42179a0b95601d966aad1a1e7
     t.integer  "weight"
     t.text     "desires"
     t.string   "weight_unit"
@@ -63,6 +77,9 @@ ActiveRecord::Schema.define(version: 20160721230116) do
     t.integer  "height"
     t.string   "education"
     t.integer  "religious_beliefs"
+=======
+    t.boolean  "drinks"
+>>>>>>> messaging bones started
   end
 
 end
