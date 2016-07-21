@@ -21,6 +21,14 @@
     <%= radio_button_tag(:distance, "150") %>
     <%= label_tag(:distance_150, "Within 150km", class: 'm-r-2') %>
 
+    <h2>Filter by age range</h2>
+
+    <%= number_field(:min_age, :age, in: 18..120, step: 1) %>
+    <%= number_field(:max_age, :age, in: 18..120, step: 1) %>
+
     <%= submit_tag("Search", {class: 'btn brr-5 m-1'}) %>
+
+
+
   <% end %>
 </div>

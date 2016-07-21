@@ -46,15 +46,12 @@ ActiveRecord::Schema.define(version: 20160720151448) do
     t.datetime "updated_at",  null: false
     t.text     "biography"
     t.integer  "customer_id"
-    t.boolean  "drinks"
     t.string   "gender"
     t.string   "name"
     t.string   "postcode"
     t.decimal  "latitude"
     t.decimal  "longitude"
-    t.integer  "weight"
-    t.string   "weight_unit"
-    t.text     "desires"
+    t.boolean  "drinks"
   end
 
 end
