@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile
+  before_action :set_profile, :only => [:update, :show, :edit]
 
   def update
     if @profile.save
@@ -12,10 +12,15 @@ class ProfilesController < ApplicationController
   end
 
   def search
-    @results = Profile.where(gender: params[:gender])
-    @results = Profile.near(@profile.postcode, params[:distance].to_f).to_a
-    @results.shift
-    @results
+    @results = Profile.where('id != ?', current_customer.profile.id)
+
+    if params[:gender]
+      @results = @results.where(gender: params[:gender])
+    end
+
+    if params[:distance]
+      @results = @results.near(current_customer.profile.postcode, params[:distance].to_f)
+    end
   end
 
   private

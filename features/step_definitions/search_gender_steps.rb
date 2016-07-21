@@ -1,10 +1,5 @@
-Given(/^that they are registered$/) do
-  @profile1 = Profile.create!(name: "Joe Bloggs", gender:"male")
-  @profile2 = Profile.create!(name: "Mary Blythe", gender:"female")
-end
-
-Given(/^they are on their dashboard page$/) do
-  visit profile_path(@profile1)
+Given(/^Bob is looking at his profile page$/) do
+  visit profile_path(@profile_1)
 end
 
 When(/^they select a gender type$/) do
@@ -12,10 +7,10 @@ When(/^they select a gender type$/) do
 end
 
 When(/^they press search button$/) do
-  # save_and_open_page
   click_button('Search')
 end
 
 Then(/^a list of filtered profiles is diplayed$/) do
-  expect(page).to have_content('Mary Blythe')
+  expect(page).to have_content('Penny')
+  expect(page).to have_content('Jess')
 end

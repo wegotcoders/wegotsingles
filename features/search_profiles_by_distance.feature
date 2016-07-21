@@ -1,9 +1,9 @@
 Feature: Search profiles by distance
 
 Background:
-	Given a person is registered
-  	And they have signed in
-  	And they are on their personal profile page
+	Given some users have registered
+  	And Jess has signed in
+  	And Jess is looking at her profile page
 
 Scenario: A customer searches within 5 kilometres
 	When they select to search within 5km of themselves
