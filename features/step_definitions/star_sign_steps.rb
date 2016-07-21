@@ -16,5 +16,5 @@ Then(/^their star sign is automatically set$/) do
   star_signs = ["Capricorn","Aquarius","Pisces","Aries","Taurus","Gemini",
                 "Cancer","Leo","Virgo","Libra","Scorpio","Sagittarius"]
   
-  expect(star_signs).to include(@profile.star_sign)
+  expect(star_signs).to include(@profile.star_sign.capitalize)
 end
