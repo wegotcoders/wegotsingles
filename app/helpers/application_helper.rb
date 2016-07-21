@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   def ethnicity_options
     options_for_select([
       ['Choose Ethnicity...', nil],
@@ -72,4 +73,18 @@ module ApplicationHelper
       ["Other", 44]
     ]
   end
+
+  def education_options
+    options_for_select([
+      ['Choose Highest Education Attained...', nil],
+      ['PhD', 0],
+      ['Masters MSc/MBA', 1],
+      ['BSc/Undergraduate Degree', 2],
+      ['A Levels', 3],
+      ['HND/HNC/NVQ', 4],
+      ['GCSE', 5],
+      ['Other', 6]
+      ], get_pre_selected_option("education"))
+  end
+
 end
