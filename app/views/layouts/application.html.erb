@@ -8,11 +8,24 @@
 </head>
 <body>
 
-	<header>
-		<i id="main-logo">We Got Singles</i>
+	<header class="wrapper">
+		<a href="/" class="l-0"><i id="main-logo" class="column-4" >We Got Singles</i></a>
+		<div class="logged_in column-4 offset-9">
+			<% if current_customer %>
+				<%= link_to "View Account", edit_customer_registration_path, method: :get, class: 'btn m-1' %>
+				<%= link_to "Log Out", destroy_customer_session_path, method: :delete, class: 'btn'%>
+			  <p class="f-white f-1"> Logged in as <%= link_to "#{current_customer.username}", profile_path(current_customer.profile), method: :get, class: 'l-0' %> </p>
+			  <% if current_customer.profile.gender == "male" %>
+				  <%= link_to "Become a Premium Member", edit_customer_registration_path, method: :get, class: 'btn m-1' %>
+				<% end %>			 
+			<% else %>
+				<%= link_to "Log In", new_customer_session_path, method: :get, class: 'btn m-1' %>
+				<%= link_to "Sign Up", new_customer_registration_path, method: :get, class: 'btn m-1' %>	  			  
+			<% end %>
+		</div>    
 	</header>
 
-	<main>
+	<main class="wrapper">
 	  <%= render "layouts/alerts" %>
 		<%= yield %>
 	</main>
