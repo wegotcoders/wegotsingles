@@ -4,8 +4,8 @@
   <% for attribute in @profile.display_attribute_keys %>
     <li><%= attribute.humanize %>: <%= @profile.attributes[attribute].to_s %></li>
   <% end %>
+</ul>
 
 <%= render 'profiles/search' %>
 
 
-<p>You weigh <%= @profile.weight %></p>
