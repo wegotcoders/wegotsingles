@@ -1,4 +1,9 @@
-<h1><%= @profile.name %>'s Profile</h1>
+<h1><%= @profile.name.capitalize %>'s Profile</h1>
+
+<ul id="profile-display">
+  <% for attribute in @profile.display_attribute_keys %>
+    <li><%= attribute.humanize %>: <%= @profile.attributes[attribute].to_s %></li>
+  <% end %>
 
 <%= render 'profiles/search' %>
 
