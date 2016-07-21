@@ -12,6 +12,10 @@ gem 'inuit-rails', git: 'https://github.com/wegotcoders/inuit-rails'
 gem 'devise'
 gem 'geocoder'
 gem 'faker'
+gem 'capistrano', '~> 2.1'
+gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave'
+gem 'mini_magick', '~> 3.8.0'
+gem 'fog', '~> 1.34.0'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -24,4 +28,7 @@ group :development, :test do
   gem 'factory_girl_rails'
 end
 
+group :production do
+  gem 'aws-sdk'
+end
 

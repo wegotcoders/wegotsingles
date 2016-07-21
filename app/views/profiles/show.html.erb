@@ -1,8 +1,11 @@
 <div class="profile-display column-5 offset-1">
-	<h1><%= @profile.name.capitalize %>'s Profile</h1>
+<h1><%= @profile.name.capitalize %>'s Profile</h1>
+  <% @profile.images.each do |image| %>
+    <%= image_tag(image.url, alt: "Profile Image") %>
+  <%end%>
 
   <% if current_customer.profile.id == @profile.id %>
-	  <span><a href="/profiles/<%= @profile.id %>/edit">Edit</a></span>
+    <span><a href="/profiles/<%= @profile.id %>/edit">Edit</a></span>
   <% end %>
 
 	<dl id="profile-display">
@@ -20,5 +23,6 @@
 	  <% end %>
 	</dl>
 </div>
+<p>You weigh <%= @profile.weight %></p>
 
 <%= render 'profiles/search' %>

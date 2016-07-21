@@ -26,5 +26,10 @@ module Wegotsingles
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.active_record.raise_in_transactional_callbacks = true 
+    config.assets.enabled = true
+    config.assets.initialized_on_precompile = true
+    config.action_view.embed_authenticity_token_in_remote_forms = true
+    config.action_controller.perform_caching = true
   end
 end
