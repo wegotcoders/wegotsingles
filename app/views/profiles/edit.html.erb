@@ -18,6 +18,7 @@
   <%= f.check_box :smoker %>
   <%= f.label :smoker, "Smoker" %>
 
+
   <hr>
     <select id="Industry" name="profile[industry]">
     <option value="" style="display:none">Choose Industry</option>
@@ -47,7 +48,7 @@
   <input type= "number" name="pounds" min="0" max="13">
   </dl>
 </div>
-  
+
 <div id="metric">
   <dl>
   <dt>Kilograms:</dt>
@@ -55,6 +56,7 @@
   </dl>
 </div>
 
+<%= f.select(:ethnicity, ethnicity_options, id: "Ethnicity", name: "profile[ethnicity]") %>
 <%= f.submit %>
 
 <% end %>
