@@ -15,20 +15,18 @@ Given(/^they both have a profile$/) do
                               biography: "hello world i'm so awesome", 
                               customer: @customer1,
                               )
-
   @profile2 = Profile.create!(
                               name: "sally",
                               biography: "hello dateables, check me out", 
                               customer: @customer2,
-                              postcode: 'E1 5JR',
-                              smoker: true,
+                              postcode: "EN11 8BX",
                               )
 end
 
 Given(/^Customer1 has signed in$/) do
   visit new_customer_session_path
   fill_in "Username", with: @customer1.username
-  fill_in "Password", with: @customer2.password
+  fill_in "Password", with: @customer1.password
   click_on "Log in"
 end
 
@@ -40,6 +38,5 @@ Then(/^they should see Customer2 profile fields$/) do
   expect(page).to have_css("h1", text: @profile2.name.capitalize)
   expect(page).to have_css("li", text: "Biography: #{@profile2.biography}")
   expect(page).to have_css("li", text: "Postcode: #{@profile2.postcode}")
-  expect(page).to have_css("li", text: "Smoker: #{@profile2.smoker}")
   # expect(page).to have_css('img[src="picture.jpg"][alt=India]')
 end
