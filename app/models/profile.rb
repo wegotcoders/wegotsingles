@@ -2,6 +2,7 @@ class Profile < ActiveRecord::Base
   belongs_to :customer
   geocoded_by :postcode
   after_validation :geocode
+<<<<<<< HEAD
 
   def display_attribute_keys
     self.attributes.keys.to_a - ['id', 'name', 'created_at', 'updated_at', 'customer_id', 'latitude', 'longitude']
@@ -37,6 +38,9 @@ class Profile < ActiveRecord::Base
     self.star_sign = star_signs.select do |key,value|
       dob.between?(value.first,value.last)
     end.keys.first.to_s
+=======
+  validates :weight, numericality: {only_integer: true, greater_than_or_equal_to: 0}
+>>>>>>> d42e9b4... Added selective display of metric and imperial data entry fields and validation of weight fields. Modified Profile controller to only send weight parameters to profile class calculate weight method
 
   def self.calculate_weight(params)
     if params[:weight_unit] == 'Imperial'
@@ -47,12 +51,12 @@ class Profile < ActiveRecord::Base
   end
 
   def self.convert_imperial(stones, pounds)
-    weight = ((stones.to_f*14 + pounds.to_f)/2.2).round
+    weight = ((stones.to_f * 14 + pounds.to_f) / 2.2).round
   end
 
   def self.convert_metric(weight)
-    stones = (weight * 2.2/14).floor
-    pounds = ((weight * 2.2)%14).floor
+    stones = (weight * 2.2 / 14).floor
+    pounds = ((weight * 2.2) % 14).floor
     [stones, pounds]
   end
 end

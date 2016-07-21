@@ -1,5 +1,5 @@
-Given(/^that they are registered$/) do
-  @profile = Profile.create!()
+Given(/^the customer is registered$/) do
+  @profile = Profile.create!(weight: 88)
 end
 
 Given(/^they sign in to the system$/) do
