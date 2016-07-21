@@ -27,6 +27,10 @@ When(/^they click Update Profile$/) do
   click_on "Update Profile"
 end
 
+When(/^they edit their desires$/) do
+  fill_in "Desires", with: Faker::Lorem.paragraph
+end
+
 Then(/^their changes are saved$/) do
   expect(page).to have_content("Profile was updated")
 end

@@ -52,6 +52,9 @@ ActiveRecord::Schema.define(version: 20160720151448) do
     t.string   "postcode"
     t.decimal  "latitude"
     t.decimal  "longitude"
+    t.integer  "weight"
+    t.string   "weight_unit"
+    t.text     "desires"
   end
 
 end
