@@ -1,0 +1,1 @@
+require './spec/support/geocoder_helper'

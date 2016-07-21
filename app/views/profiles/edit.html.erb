@@ -1,0 +1,19 @@
+<h1> Edit Profile</h1>
+
+<%= form_for @profile do |f| %>
+
+  <%= f.label :biography %>
+  <%= f.number_field :biography %>
+
+  <%= f.label :weight %>
+  <%= f.number_field :weight %>
+
+  <%= f.label :drinks, "Do you drink?" %>
+  <%= f.check_box :drinks %>
+
+  <%= f.label :desires %>
+  <%= f.text_area :desires %>
+
+  <%= f.submit %>
+
+<% end %>
