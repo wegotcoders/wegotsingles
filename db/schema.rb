@@ -52,6 +52,9 @@ ActiveRecord::Schema.define(version: 20160720151448) do
     t.decimal  "latitude"
     t.decimal  "longitude"
     t.boolean  "drinks"
+    t.integer  "weight"
+    t.text     "desires"
+    t.string   "weight_unit"
   end
 
 end

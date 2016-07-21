@@ -1,8 +1,12 @@
 When(/^they select an age range$/) do
-  fill_in "Minimum Age", with: 19
-  fill_in "Maximum Age", with: 27
+  fill_in "age_min", with: 19
+  fill_in "age_max", with: 27
 end
 
 Then(/^a list of age\-filtered profiles is diplayed$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+	save_and_open_page
+  expect(page).to_not have_content("Bob")  
+  expect(page).to have_content("Penny")
+  expect(page).to have_content("Ric")
+  expect(page).to_not have_content("Jess")
 end
