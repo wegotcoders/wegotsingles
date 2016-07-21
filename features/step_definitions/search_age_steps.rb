@@ -4,7 +4,6 @@ When(/^they select an age range$/) do
 end
 
 Then(/^a list of age\-filtered profiles is diplayed$/) do
-	save_and_open_page
   expect(page).to_not have_content("Bob")  
   expect(page).to have_content("Penny")
   expect(page).to have_content("Ric")
