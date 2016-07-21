@@ -10,6 +10,7 @@ end
 
 When(/^they enter an occupation$/) do
   fill_in "Occupation", with: "Teacher"
+  save_and_open_page
 end
 
 When(/^they update their profile$/) do
