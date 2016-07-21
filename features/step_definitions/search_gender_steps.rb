@@ -1,23 +1,24 @@
 Given(/^that they are registered$/) do
-  Profile.new(postcode: 'EN118BX', latitude: '51.76000699999999', longitude: '-0.015042')
+  @profile1 = Profile.create!(name: "Joe Bloggs", gender:"male")
+  @profile2 = Profile.create!(name: "Mary Blythe", gender:"female")
 end
 
-Given(/^that they have signed in$/) do
+Given(/^they have signed in$/) do
   # to be done via Devise later
 end
 
 Given(/^they are on their dashboard page$/) do
-  visit profile_dashboard_path
+  visit profile_path(@profile1)
 end
 
 When(/^they select a gender type$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  choose('Female')
 end
 
 When(/^they press search button$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  click_button('Search')
 end
 
 Then(/^a list of filtered profiles is diplayed$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_content('Mary Blythe')
 end

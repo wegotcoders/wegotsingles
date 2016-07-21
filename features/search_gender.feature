@@ -2,7 +2,7 @@ Feature: Find profiles by gender
 
 Background:
 	Given that they are registered
-	And that they have signed in
+	And they have signed in
 	And they are on their dashboard page
 
 Scenario: A customer selects a gender to search by

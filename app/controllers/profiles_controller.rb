@@ -1,5 +1,4 @@
 class ProfilesController < ApplicationController
-
   before_action :set_profile
 
   def update
@@ -12,6 +11,10 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def search
+    @results = Profile.where(gender: params[:gender])
+  end
+
   private
 
   def profile_params
@@ -21,5 +24,4 @@ class ProfilesController < ApplicationController
   def set_profile
     @profile = Profile.find(params[:id])
   end
-
 end
