@@ -16,12 +16,8 @@ Feature: A customer edits their profile
     And they click Update Profile
     Then their changes are saved
 
-  Scenario: A customer edits their profile biography
-    When they visit the edit profile page
-    And they edit their biography
-    Then their changes are saved
-
   Scenario: A customer edits their desires
     When they visit the edit profile page
     And they edit their desires
+    And they click Update Profile
     Then their changes are saved

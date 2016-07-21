@@ -29,7 +29,6 @@ end
 
 When(/^they edit their desires$/) do
   fill_in "Desires", with: Faker::Lorem.paragraph
-  click_on "Update Profile"
 end
 
 Then(/^their changes are saved$/) do
