@@ -1,4 +1,5 @@
 Feature: Customer registration
+
   Scenario: A customer registers with the site
     Given they're on the registration page
     When they provide a valid username

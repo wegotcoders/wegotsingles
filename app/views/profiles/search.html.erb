@@ -1,10 +1,13 @@
 <div class="wrapper">
-  <h1 id="search-results">Your Matches!</h1>  
-    <ul class="list-0">
-      <% @results.each do |result| %>
-        <li>
-          <%= result.name %>
-        </li>
-      <% end %>
-    </ul>
+  <h1 id="search-results">Your Matches!</h1>
+
+  <ol class="list-0">
+    <% @results.each do |result| %>
+      <li>
+    		<%= result.name %>
+      </li>
+    <% end %>
+  </ol>
 </div>
+
+<%= render 'profiles/search' %>

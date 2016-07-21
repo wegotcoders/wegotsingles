@@ -47,6 +47,11 @@ ActiveRecord::Schema.define(version: 20160720151448) do
     t.text     "biography"
     t.integer  "customer_id"
     t.boolean  "drinks"
+    t.string   "gender"
+    t.string   "name"
+    t.string   "postcode"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
   end
 
 end
