@@ -1,0 +1,13 @@
+---
+- :name: Bob
+  :postcode: EN11 8BX
+  :gender: male
+- :name: Penny
+  :postcode: SG12 0SY
+  :gender: female
+- :name: Ric
+  :postcode: CB2 1TN
+  :gender: male
+- :name: Jess
+  :postcode: EN11 8BX
+  :gender: female
