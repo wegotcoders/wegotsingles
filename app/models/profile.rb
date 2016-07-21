@@ -16,22 +16,27 @@ class Profile < ActiveRecord::Base
   def set_star_sign
 
     dob = self.customer.date_of_birth
+    year = dob.year
     month = dob.month
     day = dob.day
-    star_signs = {capricorn: [12,22,1,19],
-                  aquarius: [1,20,2,18],
-                  pisces: [2,19,3,20],
-                  aries: [3,21,4,19],
-                  taurus: [4,20,5,20],
-                  gemini: [5,21,6,20],
-                  cancer: [6,21,7,22],
-                  leo: [7,23,8,22],
-                  virgo: [8,23,9,22],
-                  libra: [9,23,10,22],
-                  scorpio: [10,23,11,21],
-                  sagittarius: [11,22,12,21]
+
+    star_signs = {capricorn: [Date.new(year,12,20),Date.new(year, 1,19)],
+                  aquarius: [Date.new(year,1,20), Date.new(year,2,18)],
+                  pisces: [Date.new(year,2,19),Date.new(year,3,20)],
+                  aries: [Date.new(year,3,21), Date.new(year,4,19)],
+                  taurus: [Date.new(year,4,20), Date.new(year,5,20)],
+                  gemini: [Date.new(year,5,21),Date.new(year,6,20)],
+                  cancer: [Date.new(year,6,21),Date.new(year,7,22)],
+                  leo: [Date.new(year,7,23),Date.new(year,8,22)],
+                  virgo: [Date.new(year,8,23),Date.new(year,9,22)],
+                  libra: [Date.new(year,9,23), Date.new(year,10,22)],
+                  scorpio: [Date.new(year,10,23),Date.new(year,11,21)],
+                  sagittarius: [Date.new(year,11,22),Date.new(year,12,21)]
                   }
 
+    self.star_sign = star_signs.select do |key,value|
+      dob.between?(value.first,value.last)
+    end.keys.first.to_s
 
   end
 end
