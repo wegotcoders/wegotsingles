@@ -58,4 +58,11 @@ class Profile < ActiveRecord::Base
     pounds = ((weight * 2.2) % 14).floor
     [stones, pounds]
   end
+
+  def imperial_height
+    height_in_inches = (self.height * 0.3937)
+    feet = (height_in_inches / 12).to_i
+    inches = height_in_inches.to_i % 12
+    return "(#{feet} ft #{inches} in)"
+  end
 end

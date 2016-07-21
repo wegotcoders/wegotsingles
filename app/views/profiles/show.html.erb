@@ -3,17 +3,20 @@
 
 <ul id="profile-display">
   <% for attribute in @profile.display_attribute_keys %>
-    <% if attribute == "religious_beliefs" %>
-      <li><%= attribute.humanize %>: <%= display_attribute(religious_beliefs, @profile.religious_beliefs) %></li>
-    <% else %>
-      <li><%= attribute.humanize %>: <%= @profile.attributes[attribute].to_s %></li>
-    <% end %>
+    <li>
+      <%= attribute.humanize %>:
+
+      <% if attribute == "religious_beliefs" %>
+        <%= display_attribute(religious_beliefs, @profile.religious_beliefs) %>
+      <% elsif attribute == "height" %>
+        <%= @profile.attributes[attribute].to_s %> cm <%= @profile.imperial_height %>
+      <% else %>
+        <%= @profile.attributes[attribute].to_s %>
+      <% end %>
+    </li>
   <% end %>
 
 <h1><%= @profile.name %>'s Profile</h1>
 
 
 <%= render 'profiles/search' %>
-
-
-<p>You weigh <%= @profile.weight %></p>
