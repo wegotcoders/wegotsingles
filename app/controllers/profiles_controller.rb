@@ -1,10 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, :only => [:update, :show, :edit]
 
-  def create
-    binding.pry
-  end
-
   def update
     @profile.update(profile_params)
 
