@@ -5,7 +5,6 @@ class ProfilesController < ApplicationController
     weight_params = {weight_unit: params[:weight_unit], stones: params[:stones],
                       pounds: params[:pounds], weight: params[:profile][:weight]}
 
-
     if @profile.update(profile_params)
       # Yuk!
       @profile.weight = Profile.calculate_weight(weight_params)
@@ -36,7 +35,7 @@ class ProfilesController < ApplicationController
   def profile_params
     params.require(:profile).permit(:biography, :drinks, :weight, :desires,
       :postcode, :name, :gender, :latitude, :longitude,:industry, :occupation,
-      :ethnicity, :religious_beliefs)
+      :ethnicity, :religious_beliefs, :height)
   end
 
   def set_profile

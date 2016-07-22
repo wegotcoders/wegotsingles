@@ -11,14 +11,10 @@ class Profile < ActiveRecord::Base
 
   attr_accessor :star_sign
 
-  private
-
   def set_star_sign
 
     dob = self.customer.date_of_birth
     year = dob.year
-    month = dob.month
-    day = dob.day
 
     star_signs = {capricorn: [Date.new(year,12,20),Date.new(year, 1,19)],
                   aquarius: [Date.new(year,1,20), Date.new(year,2,18)],
@@ -34,9 +30,9 @@ class Profile < ActiveRecord::Base
                   sagittarius: [Date.new(year,11,22),Date.new(year,12,21)]
                   }
 
-    self.star_sign = star_signs.select do |key,value|
+    self.star_sign = star_signs.find do |key,value|
       dob.between?(value.first,value.last)
-    end.keys.first.to_s
+    end.first.to_s
   end
 
   validates :weight, numericality: {only_integer: true, greater_than_or_equal_to: 0}, allow_blank: true
@@ -57,5 +53,14 @@ class Profile < ActiveRecord::Base
     stones = (weight * 2.2 / 14).floor
     pounds = ((weight * 2.2) % 14).floor
     [stones, pounds]
+  end
+
+  def imperial_height
+    unless self.height.nil?
+      height_in_inches = (self.height * 0.3937)
+      feet = (height_in_inches / 12).to_i
+      inches = height_in_inches.to_i % 12
+      return "(#{feet} ft #{inches} in)"
+    end
   end
 end
