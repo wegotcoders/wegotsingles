@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721204408) do
+ActiveRecord::Schema.define(version: 20160721230116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20160721204408) do
   add_index "customers", ["username"], name: "index_customers_on_username", unique: true, using: :btree
 
   create_table "profiles", force: :cascade do |t|
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.text     "biography"
     t.integer  "customer_id"
     t.string   "gender"
@@ -58,8 +58,11 @@ ActiveRecord::Schema.define(version: 20160721204408) do
     t.boolean  "drinks"
     t.string   "occupation"
     t.string   "industry"
-    t.string   "images",      default: [],              array: true
+    t.string   "images",            default: [],              array: true
     t.string   "ethnicity"
+    t.integer  "height"
+    t.string   "education"
+    t.integer  "religious_beliefs"
   end
 
 end

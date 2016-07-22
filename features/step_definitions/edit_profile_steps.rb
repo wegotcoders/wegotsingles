@@ -32,6 +32,14 @@ When(/^they edit their desires$/) do
   fill_in "Desires", with: Faker::Lorem.paragraph
 end
 
+When(/^they select their religion in the select field$/) do
+  select "Zoroastrianism", from: "profile_religious_beliefs"
+end
+
 Then(/^their changes are saved$/) do
   expect(page).to have_content("Profile was updated")
+end
+
+Then(/^their religion appears on the show page$/) do
+  expect(page).to have_content("Religious beliefs: Zoroastrianism")
 end

@@ -21,3 +21,11 @@ Feature: A customer edits their profile
     And they edit their desires
     And they click Update Profile
     Then their changes are saved
+
+  Scenario: A customer edits their religious beliefs
+    When they visit the edit profile page
+    And they select their religion in the select field
+    And they click Update Profile
+    Then their changes are saved
+    And their religion appears on the show page
+
