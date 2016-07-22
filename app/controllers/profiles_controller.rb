@@ -5,8 +5,11 @@ class ProfilesController < ApplicationController
     weight_params = {weight_unit: params[:weight_unit], stones: params[:stones],
                       pounds: params[:pounds], weight: params[:profile][:weight]}
 
-    @profile.weight = Profile.calculate_weight(weight_params)
+
     if @profile.update(profile_params)
+      # Yuk!
+      @profile.weight = Profile.calculate_weight(weight_params)
+      @profile.save!
 
       flash[:notice] = "Profile was updated"
       redirect_to profile_path(@profile)
