@@ -11,11 +11,11 @@ gem 'spring', group: :development
 gem 'inuit-rails', git: 'https://github.com/wegotcoders/inuit-rails'
 gem 'devise'
 gem 'geocoder'
+gem 'faker'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
-  gem 'faker'
   gem 'pry-byebug'
   gem 'mocha'
   gem 'cucumber-rails', :require => false
@@ -23,3 +23,5 @@ group :development, :test do
   gem 'launchy'
   gem 'factory_girl_rails'
 end
+
+
