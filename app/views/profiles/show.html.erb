@@ -3,7 +3,11 @@
 
 <ul id="profile-display">
   <% for attribute in @profile.display_attribute_keys %>
-    <li><%= attribute.humanize %>: <%= @profile.attributes[attribute].to_s %></li>
+    <% if attribute == "religious_beliefs" %>
+      <li><%= attribute.humanize %>: <%= display_attribute(religious_beliefs, @profile.religious_beliefs) %></li>
+    <% else %>
+      <li><%= attribute.humanize %>: <%= @profile.attributes[attribute].to_s %></li>
+    <% end %>
   <% end %>
 
 <h1><%= @profile.name %>'s Profile</h1>

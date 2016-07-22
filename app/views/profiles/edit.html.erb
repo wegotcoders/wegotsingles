@@ -18,7 +18,6 @@
   <%= f.check_box :smoker %>
   <%= f.label :smoker, "Smoker" %>
 
-
   <hr>
     <select id="Industry" name="profile[industry]">
     <option value="" style="display:none">Choose Industry</option>
@@ -57,6 +56,14 @@
 </div>
 
 <%= f.select(:ethnicity, ethnicity_options, id: "Ethnicity", name: "profile[ethnicity]") %>
-<%= f.submit %>
+
+  <fieldset>
+    <%= f.label :religious_beliefs %>
+    <%= f.select :religious_beliefs,
+      options_for_select(religious_beliefs,
+       get_pre_selected_option("religious_beliefs")) %>
+  </fieldset>
+
+  <%= f.submit %>
 
 <% end %>

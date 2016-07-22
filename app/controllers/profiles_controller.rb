@@ -2,11 +2,15 @@ class ProfilesController < ApplicationController
   before_action :set_profile, :only => [:update, :show, :edit]
 
   def update
-    weight_params = {weight_unit: params[:weight_unit], stones: params[:stones], 
+    weight_params = {weight_unit: params[:weight_unit], stones: params[:stones],
                       pounds: params[:pounds], weight: params[:profile][:weight]}
 
-    @profile.weight = Profile.calculate_weight(weight_params) 
-    if @profile.save
+
+    if @profile.update(profile_params)
+      # Yuk!
+      @profile.weight = Profile.calculate_weight(weight_params)
+      @profile.save!
+
       flash[:notice] = "Profile was updated"
       redirect_to profile_path(@profile)
     else
@@ -31,7 +35,8 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(:biography, :drinks, :weight, :desires,
-      :postcode, :name, :gender, :latitude, :longitude,:industry, :occupation, :ethnicity)
+      :postcode, :name, :gender, :latitude, :longitude,:industry, :occupation,
+      :ethnicity, :religious_beliefs)
   end
 
   def set_profile
