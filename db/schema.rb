@@ -53,10 +53,11 @@ ActiveRecord::Schema.define(version: 20160722095940) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.text     "biography"
     t.integer  "customer_id"
+    t.string   "images",            default: [],              array: true
     t.string   "gender"
     t.string   "name"
     t.string   "postcode"
@@ -67,11 +68,11 @@ ActiveRecord::Schema.define(version: 20160722095940) do
     t.string   "weight_unit"
     t.boolean  "smoker"
     t.boolean  "drinks"
+    t.integer  "religious_beliefs"
     t.string   "occupation"
     t.string   "industry"
-    t.string   "ethnicity"
     t.integer  "height"
-    t.integer  "religious_beliefs"
+    t.string   "ethnicity"
     t.string   "education"
   end
 

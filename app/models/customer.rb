@@ -6,6 +6,7 @@ class Customer < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
   validates :date_of_birth, presence: true
   validate :over_eighteen
+  has_one :customer
 
   has_one :profile
 

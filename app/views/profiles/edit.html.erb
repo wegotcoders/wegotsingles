@@ -19,6 +19,8 @@
 
     <%= f.label :smoker, "Smoker" %>
     <%= f.check_box :smoker, class: "form-control" %>
+    
+    <hr>
 
     <select id="Industry" name="profile[industry]" class="form-control">
       <option value="" style="display:none">Choose Industry</option>
@@ -55,13 +57,19 @@
       </dl>
     </div>
 
+  <fieldset>
     <%= f.label :religious_beliefs %>
     <%= f.select :religious_beliefs,
       options_for_select(religious_beliefs,
-       get_pre_selected_option("religious_beliefs")) %>
+        get_pre_selected_option("religious_beliefs")) %>
+  <fieldset>
 
-    <%= f.select(:ethnicity, ethnicity_options, id: "Ethnicity", name: "profile[ethnicity]") %>
-    <%= f.select(:education, education_options, id: "Education", name: "profile[education]") %>
+  <%= f.select(:ethnicity, ethnicity_options, id: "Ethnicity", name: "profile[ethnicity]") %>
+  <%= f.select(:education, education_options, id: "Education", name: "profile[education]") %>
+    <%= f.label :images %>
+  <fieldset>
+    <%= f.file_field :images, multiple: true, accept: "image/jpeg,image/gif,image/png" %>
+  </fieldset>
 
     <%= f.submit %>
   </fieldset>
