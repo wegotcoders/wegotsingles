@@ -1,28 +1,26 @@
 <h1> Edit Profile</h1>
 
 <%= form_for @profile do |f| %>
-
-  <fieldset>
+  <fieldset class="form-group">
     <%= f.label :biography %>
-    <%= f.number_field :biography %>
-
+    <%= f.text_area :biography, class: "form-control" %>
+  
     <%= f.label :weight %>
-    <%= f.number_field :weight %>
+    <%= f.number_field :weight, class: "form-control" %>
 
     <%= f.label :height %>
     <%= f.number_field :height %>
 
     <%= f.label :drinks, "Do you drink?" %>
-    <%= f.check_box :drinks %>
-
+    <%= f.check_box :drinks, class: "form-control" %>
+    
     <%= f.label :desires %>
-    <%= f.text_area :desires %>
+    <%= f.text_area :desires, class: "form-control" %>
 
-    <%= f.check_box :smoker %>
     <%= f.label :smoker, "Smoker" %>
+    <%= f.check_box :smoker, class: "form-control" %>
 
-    <hr>
-      <select id="Industry" name="profile[industry]">
+    <select id="Industry" name="profile[industry]" class="form-control">
       <option value="" style="display:none">Choose Industry</option>
       <option value="aerospace">Aerospace</option>
       <option value="agriculture">Agriculture</option>
@@ -37,12 +35,11 @@
     </select>
 
     <%= f.label :occupation %>
-    <%= f.text_field :occupation %>
+    <%= f.text_field :occupation, class: "form-control" %>
 
-    <hr>
       <p>Unit: <%= select_tag("weight_unit" , options_for_select(['Metric', "Imperial"], "Metric") ) %> </p>
 
-    <div id="imperial">
+    <div id="imperial" class="form-control">
       <dl>
       <dt> Stones: </dt>
       <input type= "number" name="stones" min="0" max="30">
@@ -51,7 +48,7 @@
       </dl>
     </div>
 
-    <div id="metric">
+    <div id="metric" class="form-control">
       <dl>
       <dt>Kilograms:</dt>
       <input type="number" name="weight" min="0" max="200">
