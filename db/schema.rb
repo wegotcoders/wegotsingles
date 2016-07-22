@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160722095940) do
     t.datetime "updated_at",                     null: false
     t.text     "biography"
     t.integer  "customer_id"
+    t.string   "images",            default: [],              array: true
     t.string   "gender"
     t.string   "name"
     t.string   "postcode"
@@ -67,13 +68,12 @@ ActiveRecord::Schema.define(version: 20160722095940) do
     t.string   "weight_unit"
     t.boolean  "smoker"
     t.boolean  "drinks"
+    t.integer  "religious_beliefs"
     t.string   "occupation"
     t.string   "industry"
-    t.string   "images",            default: [],              array: true
-    t.string   "ethnicity"
     t.integer  "height"
+    t.string   "ethnicity"
     t.string   "education"
-    t.integer  "religious_beliefs"
   end
 
 end
