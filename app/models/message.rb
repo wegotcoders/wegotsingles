@@ -6,6 +6,8 @@ class Message < ActiveRecord::Base
 
   has_one :reply, class_name: 'Message', foreign_key: :replied_to_id
 
+  validates_presence_of :receiver_id, :sender_id
+
   def history 
     history = []
     message = self

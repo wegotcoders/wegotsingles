@@ -6,8 +6,13 @@
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
 
-      <!-- Latest compiled and minified CSS -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <header>
+      <i id="main-logo">We Got Singles</i>
+      <%= link_to "Inbox", profile_messages_path(current_customer.profile) unless !current_customer %>
+      <%= link_to "Log Out", destroy_customer_session_path, method: :delete %>
+    </header>
 
   </head>
   <body class="wrapper">

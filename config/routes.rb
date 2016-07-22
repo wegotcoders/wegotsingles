@@ -4,7 +4,11 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
-    resources :messages, except: [:destroy, :edit]
+    resources :messages, except: [:destroy, :edit] do
+      collection do
+	get :outbox
+      end
+    end
   end
 
 
