@@ -2,8 +2,10 @@ class ProfilesController < ApplicationController
   before_action :set_profile, :only => [:update, :show, :edit]
 
   def update
-    @profile.update(profile_params)
+    weight_params = {weight_unit: params[:weight_unit], stones: params[:stones], 
+                      pounds: params[:pounds], weight: params[:profile][:weight]}
 
+    @profile.weight = Profile.calculate_weight(weight_params) 
     if @profile.save
       flash[:notice] = "Profile was updated"
       redirect_to profile_path(@profile)

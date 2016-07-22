@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722095940) do
+ActiveRecord::Schema.define(version: 20160720164850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,20 +41,9 @@ ActiveRecord::Schema.define(version: 20160722095940) do
   add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true, using: :btree
   add_index "customers", ["username"], name: "index_customers_on_username", unique: true, using: :btree
 
-  create_table "messages", force: :cascade do |t|
-    t.text     "content"
-    t.integer  "sender_id"
-    t.integer  "receiver_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "replied_to_id"
-    t.boolean  "read"
-    t.boolean  "visible"
-  end
-
   create_table "profiles", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.text     "biography"
     t.integer  "customer_id"
     t.string   "gender"
@@ -69,6 +58,7 @@ ActiveRecord::Schema.define(version: 20160722095940) do
     t.boolean  "drinks"
     t.string   "occupation"
     t.string   "industry"
+    t.string   "images",      default: [],              array: true
   end
 
 end

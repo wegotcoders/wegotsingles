@@ -37,6 +37,25 @@ class Profile < ActiveRecord::Base
     self.star_sign = star_signs.select do |key,value|
       dob.between?(value.first,value.last)
     end.keys.first.to_s
+  end
 
+  validates :weight, numericality: {only_integer: true, greater_than_or_equal_to: 0}, allow_blank: true
+
+  def self.calculate_weight(params)
+    if params[:weight_unit] == 'Imperial'
+      return self.convert_imperial(params[:stones], params[:pounds])
+    else
+      return params[:weight]
+    end
+  end
+
+  def self.convert_imperial(stones, pounds)
+    weight = ((stones.to_f * 14 + pounds.to_f) / 2.2).round
+  end
+
+  def self.convert_metric(weight)
+    stones = (weight * 2.2 / 14).floor
+    pounds = ((weight * 2.2) % 14).floor
+    [stones, pounds]
   end
 end

@@ -1,3 +1,4 @@
+
 <h1> Edit Profile</h1>
 
 <%= form_for @profile do |f| %>
@@ -35,6 +36,25 @@
   <%= f.label :occupation %>
   <%= f.text_field :occupation %>
 
-  <%= f.submit %>
+<hr>
+  <p>Unit: <%= select_tag("weight_unit" , options_for_select(['Metric', "Imperial"], "Metric") ) %> </p>
+
+<div id="imperial">
+  <dl>
+  <dt> Stones: </dt>
+  <input type= "number" name="stones" min="0" max="30">
+  <dt>Pounds: </dt>
+  <input type= "number" name="pounds" min="0" max="13">
+  </dl>
+</div>
+  
+<div id="metric">
+  <dl>
+  <dt>Kilograms:</dt>
+  <input type="number" name="weight" min="0" max="200">
+  </dl>
+</div>
+
+<%= f.submit %>
 
 <% end %>
