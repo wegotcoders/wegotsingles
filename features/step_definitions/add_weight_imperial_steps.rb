@@ -26,7 +26,8 @@ When(/^they save the changes to their profile$/) do
   click_on "Update Profile"
 end
 
-Then(/^the weight is displayed in imperial units$/) do 
-  expect(page).to have_content("Stones: 15")
-  expect(page).to have_content("Pounds: 10")
+Then(/^the weight is stored in the profile$/) do 
+  @profile.reload
+  expect(@profile.weight).to eq 100
+  
 end
