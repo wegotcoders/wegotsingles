@@ -1,3 +1,4 @@
+
 When(/^they select an industry$/) do
   select 'Health', from: "Industry"
 end
