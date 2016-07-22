@@ -20,7 +20,7 @@ class ProfilesController < ApplicationController
   end
 
   def search
-    @results = Profile.where('id != ?', current_customer.profile.id)
+    @results = Profile.where('profiles.id != ?', current_customer.profile.id)
 
     if params[:gender]
       @results = @results.where(gender: params[:gender])
@@ -31,12 +31,9 @@ class ProfilesController < ApplicationController
     end
   
     if params[:age]
-      @results = @results.select do |result| 
-        result.customer.date_of_birth.between?(
-          Date.today - (params[:age][:max]).to_i.years,
-          Date.today - (params[:age][:min]).to_i.years
-          ) 
-      end
+      date_from = Date.today - (params[:age][:max]).to_i.years
+      date_to = Date.today - (params[:age][:min]).to_i.years 
+      @results = @results.joins(:customer).where('customers.date_of_birth > ? AND customers.date_of_birth < ?', date_from, date_to)
     end
   end
 
