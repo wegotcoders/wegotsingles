@@ -1,0 +1,23 @@
+<script>
+  var profileIds = <% @profile_ids %>;
+</script>
+<h1> New Message</h1>
+
+<%= form_for [@profile, @message] do |f| %>
+  <fieldset>
+    <%= f.label :content %>
+    <%= f.text_area :content%>
+  </fieldset>
+
+  <%= f.hidden_field :sender_id, value: @profile.id %>
+
+  <fieldset>
+    <%= f.label :receiver %>
+    <%= f.select :receiver_id, options_for_select(Profile.all.collect{|p| [p.name, p.customer.id]}) %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.submit "Send" %>
+  </fieldset>
+<% end %>
+
