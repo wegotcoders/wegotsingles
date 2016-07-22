@@ -41,5 +41,5 @@ Then(/^their changes are saved$/) do
 end
 
 Then(/^their religion appears on the show page$/) do
-  expect(page).to have_content("Religious beliefs: Zoroastrianism")
+  expect(page).to have_content("Zoroastrianism")
 end

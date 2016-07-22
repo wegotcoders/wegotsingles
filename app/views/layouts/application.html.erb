@@ -5,14 +5,35 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-</head>
-<body>
 
-	<header>
-		<i id="main-logo">We Got Singles</i>
+	  <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+</head>
+<body class="wrapper">
+
+	<header class="wrapper">
+		<a href="/" class="l-0"><i id="main-logo" >We Got Singles</i></a>
+		<div class="logged_in column-4 offset-9">
+			<% if current_customer %>
+				<ul class= "list-0">
+					<li><%= link_to "View Account", edit_customer_registration_path, method: :get, class: 'btn m-1' %></li>
+					<li><%= link_to "Log Out", destroy_customer_session_path, method: :delete, class: 'btn m-1'%></li>
+					<li class="f-white f-1 m-1"> Logged in as <%= link_to "#{current_customer.username}", profile_path(current_customer.profile), method: :get, class: 'l-0' %></li>
+				  <% if current_customer.profile.gender == "male" %>
+					  <%= link_to "Become a Premium Member", edit_customer_registration_path, method: :get, class: 'btn m-1' %>
+					<% end %>	
+				</ul>			 
+			<% else %>
+			  <ul class="list-0">
+					<li><%= link_to "Log In", new_customer_session_path, method: :get, class: 'btn m-1' %></li>
+					<li><%= link_to "Sign Up", new_customer_registration_path, method: :get, class: 'btn m-1' %></li>
+				</ul>		  			  
+			<% end %>
+		</div>    
 	</header>
 
-	<main>
+	<main class="wrapper">
 	  <%= render "layouts/alerts" %>
 		<%= yield %>
 	</main>

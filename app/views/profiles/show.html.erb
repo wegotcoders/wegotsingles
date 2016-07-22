@@ -1,22 +1,24 @@
+<div class="profile-display column-5 offset-1">
+	<h1><%= @profile.name.capitalize %>'s Profile</h1>
 
-<h1><%= @profile.name.capitalize %>'s Profile</h1>
-
-<ul id="profile-display">
-  <% for attribute in @profile.display_attribute_keys %>
-    <li>
-      <%= attribute.humanize %>:
-
-      <% if attribute == "religious_beliefs" %>
-        <%= display_attribute(religious_beliefs, @profile.religious_beliefs) %>
-      <% elsif attribute == "height" %>
-        <%= @profile.attributes[attribute].to_s %> cm <%= @profile.imperial_height %>
-      <% else %>
-        <%= @profile.attributes[attribute].to_s %>
-      <% end %>
-    </li>
+  <% if current_customer.profile.id == @profile.id %>
+	  <span><a href="/profiles/<%= @profile.id %>/edit">Edit</a></span>
   <% end %>
 
-<h1><%= @profile.name %>'s Profile</h1>
-
+	<dl id="profile-display">
+	  <% for attribute in @profile.display_attribute_keys %>
+	    <dt><%= attribute.humanize %></dt>
+	    <dd>
+        <% if attribute == "religious_beliefs" %>
+          <%= display_attribute(religious_beliefs, @profile.religious_beliefs) %>
+        <% elsif attribute == "height" %>
+          <%= @profile.attributes[attribute].to_s %> cm <%= @profile.imperial_height %>
+        <% else %>
+          <%= @profile.attributes[attribute].to_s %>
+        <% end %>
+      </dd>
+	  <% end %>
+	</dl>
+</div>
 
 <%= render 'profiles/search' %>

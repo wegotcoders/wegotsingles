@@ -23,8 +23,8 @@ When(/^they save the changes to their profile$/) do
   click_on "Update Profile"
 end
 
-Then(/^the weight is stored in the profile$/) do 
+Then(/^the weight is stored in the profile$/) do
   @profile.reload
   expect(@profile.weight).to eq 100
-  
+
 end

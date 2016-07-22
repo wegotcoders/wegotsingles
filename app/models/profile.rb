@@ -4,7 +4,7 @@ class Profile < ActiveRecord::Base
   after_validation :geocode
 
   def display_attribute_keys
-    self.attributes.keys.to_a - ['id', 'name', 'created_at', 'updated_at', 'customer_id', 'latitude', 'longitude']
+    self.attributes.keys.to_a - ['id', 'name', 'created_at', 'updated_at', 'customer_id', 'latitude', 'longitude', 'weight_unit']
   end
 
   after_create :set_star_sign

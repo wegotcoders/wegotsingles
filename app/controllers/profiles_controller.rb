@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, :only => [:update, :show, :edit]
+  before_action :access
 
   def update
     weight_params = {weight_unit: params[:weight_unit], stones: params[:stones],
@@ -40,6 +41,12 @@ class ProfilesController < ApplicationController
 
   def set_profile
     @profile = Profile.find(params[:id])
+  end
+
+  def access
+    unless current_customer
+      redirect_to new_customer_registration_path
+    end
   end
 end
 
