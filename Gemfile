@@ -12,6 +12,7 @@ gem 'inuit-rails', git: 'https://github.com/wegotcoders/inuit-rails'
 gem 'devise'
 gem 'geocoder'
 gem 'faker'
+gem 'rails_12factor'
 
 group :development, :test do
   gem 'rspec-rails'
