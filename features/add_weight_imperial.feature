@@ -1,7 +1,7 @@
 Feature: Customer adds weight in imperial to Profile
 
 Background:
-	Given the customer is registered
+	Given they have a profile
 	And they sign in to the system
 	And they are on the Profile page
 

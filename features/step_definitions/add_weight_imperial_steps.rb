@@ -1,6 +1,3 @@
-Given(/^the customer is registered$/) do
-  @profile = Profile.create!(weight: 88)
-end
 
 Given(/^they sign in to the system$/) do
   visit new_customer_session_path

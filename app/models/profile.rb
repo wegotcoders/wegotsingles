@@ -39,7 +39,7 @@ class Profile < ActiveRecord::Base
     end.keys.first.to_s
   end
 
-  validates :weight, numericality: {only_integer: true, greater_than_or_equal_to: 0}
+  validates :weight, numericality: {only_integer: true, greater_than_or_equal_to: 0}, allow_blank: true
 
   def self.calculate_weight(params)
     if params[:weight_unit] == 'Imperial'

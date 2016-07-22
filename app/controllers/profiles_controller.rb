@@ -3,7 +3,8 @@ class ProfilesController < ApplicationController
 
   def update
     weight_params = {weight_unit: params[:weight_unit], stones: params[:stones], 
-                      pounds: params[:pounds], weight: params[:weight]}
+                      pounds: params[:pounds], weight: params[:profile][:weight]}
+
     @profile.weight = Profile.calculate_weight(weight_params) 
     if @profile.save
       flash[:notice] = "Profile was updated"

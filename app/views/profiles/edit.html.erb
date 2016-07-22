@@ -14,7 +14,6 @@
 
   <%= f.label :desires %>
   <%= f.text_area :desires %>
-<<<<<<< HEAD
 
   <%= f.check_box :smoker %>
   <%= f.label :smoker, "Smoker" %>
@@ -37,17 +36,6 @@
   <%= f.label :occupation %>
   <%= f.text_field :occupation %>
 
-  <hr>
-  <p>Unit: <%= select_tag("Weight-Unit"	, options_for_select(['Metric', "Imperial"], "Metric") ) %> </p>
-  Stones: <br>
-  <input type= "number" name="stones"><br>
-  Pounds: <br>
-  <input type= "number" name="pounds"><br>
-  <br>
-
-<br>
-=======
->>>>>>> d42e9b4... Added selective display of metric and imperial data entry fields and validation of weight fields. Modified Profile controller to only send weight parameters to profile class calculate weight method
 <hr>
   <p>Unit: <%= select_tag("weight_unit" , options_for_select(['Metric', "Imperial"], "Metric") ) %> </p>
 
