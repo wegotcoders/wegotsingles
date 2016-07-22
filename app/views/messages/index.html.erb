@@ -1,0 +1,9 @@
+<h1>Your Messages</h1>
+
+<%= link_to "New message", new_profile_message_path(current_customer.profile) %>
+<% @messages.each do |message|%>
+  <section>
+    <%= message.content %>
+    <small><%= message.sender.profile.name %></small>
+  </section>
+<% end %>
