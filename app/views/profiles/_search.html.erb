@@ -1,7 +1,7 @@
 <div class="column-4 offset-1">
     <h1>Find your match!</h1>
 
-      <%= form_tag(search_profiles_path, method: "get") do %>
+    <%= form_tag(search_profiles_path, method: "get") do %>
         <h2>Search by gender:</h2>
 
         <%= radio_button_tag(:gender, "male") %>
@@ -20,8 +20,14 @@
         <%= radio_button_tag(:distance, "150") %>
         <%= label_tag(:distance_150, "Within 150km", class: 'm-r-2') %>
 
-        <div>
-          <%= submit_tag("Search", {id: 'search', class: 'wrapper btn brr-5 m-1'}) %>
-        </div>  
-      <% end %>
+        <h2>Filter by age range</h2>
+
+        <%= number_field(:age, :min, in: 18..120, step: 1) %>
+        <%= label_tag(:age_min, "Minimum Age") %>
+        <%= number_field(:age, :max, in: 18..120, step: 1) %>
+        <%= label_tag(:age_max, "Maximum Age") %>
+
+        <%= submit_tag("Search", {class: 'btn brr-5 m-1'}) %>
+
+    <% end %>
 </div>
