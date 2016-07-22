@@ -2,7 +2,7 @@ Feature: Customer adds weight in imperial to Profile
 
 Background:
 	Given they have a profile
-	And they sign in to the system
+	And they have signed in
 	And they are on the Profile page
 
 Scenario: Customer adds their weight in imperial units to their Profile
