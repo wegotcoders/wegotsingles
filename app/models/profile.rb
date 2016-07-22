@@ -37,6 +37,7 @@ class Profile < ActiveRecord::Base
     self.star_sign = star_signs.select do |key,value|
       dob.between?(value.first,value.last)
     end.keys.first.to_s
+  end
 
   validates :weight, numericality: {only_integer: true, greater_than_or_equal_to: 0}
 
