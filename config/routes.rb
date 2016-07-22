@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :messages, except: [:destroy, :edit]
+
+
   devise_for :customers
   root 'pages#home'
 
