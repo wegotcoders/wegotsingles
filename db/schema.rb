@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 20160722095940) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.text     "biography"
     t.integer  "customer_id"
     t.string   "gender"
@@ -69,11 +69,10 @@ ActiveRecord::Schema.define(version: 20160722095940) do
     t.boolean  "drinks"
     t.string   "occupation"
     t.string   "industry"
-    t.string   "images",            default: [],              array: true
     t.string   "ethnicity"
     t.integer  "height"
-    t.string   "education"
     t.integer  "religious_beliefs"
+    t.string   "education"
   end
 
 end

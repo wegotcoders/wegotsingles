@@ -1,14 +1,14 @@
-<div class="wrapper">
+<div class="column-5 offset-1">
 
-  <h1 id="search-results">Your Matches!</h1>
+  <h1 id="search-results" class="f-2">Your Matches!</h1>
 
-  <ol class="list-0">
+  <ol class="list-0 m-2">
     <% @results.each do |result| %>
-      <li>
-    		<%= result.name %>
+      <li class="column-1 offset-1">
+    		<a href="/profiles/<%=result.id%>"><%= result.name %></a>
       </li>
     <% end %>
   </ol>
-</div>
+</div>  
 
 <%= render 'profiles/search' %>
