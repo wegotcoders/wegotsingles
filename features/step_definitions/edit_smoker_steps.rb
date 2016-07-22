@@ -3,7 +3,7 @@ Given(/^they have created a profile$/) do
     password: "password", password_confirmation: "password",
     confirmation_sent_at: Time.now - 1.day,
     confirmed_at: Time.now)
-  @profile = Profile.create!(customer: @customer, smoker: true)
+  @profile = Profile.create!(customer: @customer, smoker: true, name: Faker::Name.name)
 end
 
 When(/^they edit their smoking status$/) do

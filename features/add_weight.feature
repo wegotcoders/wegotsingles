@@ -1,7 +1,7 @@
 Feature: Customer adds weight to profile
 
 Background:
-  Given that they are registered
+  Given they have a profile
   And they sign in
   And they are on their edit profile page
 

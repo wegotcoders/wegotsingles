@@ -1,7 +1,3 @@
-Given(/^that they are registered$/) do
-  @profile = Profile.create!()
-end
-
 Given(/^they sign in$/) do
   visit new_customer_session_path
   fill_in "Username", with: "fred"

@@ -1,6 +1,8 @@
 Given(/^they have a profile$/) do
   @customer = FactoryGirl.create(:customer)
-  @profile = Profile.create!(customer: @customer)
+  @customer.profile.update(customer: @customer, name: Faker::Name.name)
+  @customer.save!
+  @profile = @customer.profile
 end
 
 Given(/^they have signed in$/) do
