@@ -22,12 +22,12 @@
 
         <h2>Filter by age range</h2>
 
-        <%= number_field(:min_age, :age, in: 18..120, step: 1) %>
-        <%= number_field(:max_age, :age, in: 18..120, step: 1) %>
+        <%= number_field(:age, :min, in: 18..120, step: 1) %>
+        <%= label_tag(:age_min, "Minimum Age") %>
+        <%= number_field(:age, :max, in: 18..120, step: 1) %>
+        <%= label_tag(:age_max, "Maximum Age") %>
 
         <%= submit_tag("Search", {class: 'btn brr-5 m-1'}) %>
-
-
 
     <% end %>
 </div>

@@ -29,6 +29,15 @@ class ProfilesController < ApplicationController
     if params[:distance]
       @results = @results.near(current_customer.profile.postcode, params[:distance].to_f)
     end
+  
+    if params[:age]
+      @results = @results.select do |result| 
+        result.customer.date_of_birth.between?(
+          Date.today - (params[:age][:max]).to_i.years,
+          Date.today - (params[:age][:min]).to_i.years
+          ) 
+      end
+    end
   end
 
   private

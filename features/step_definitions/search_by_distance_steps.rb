@@ -1,11 +1,12 @@
 Given(/^some users have registered$/) do
   users = YAML.load_file 'features/support/users.yml'
+  ages=[18,22,25,33]
 
   users.each_with_index do |user_data, i|
     customer = instance_variable_set :"@customer_#{i + 1}", Customer.create!(
       :email => Faker::Internet.email,
       :username => Faker::Lorem.sentence,
-      :date_of_birth => (18..55).to_a.sample.years.ago,
+      :date_of_birth => ages[i].years.ago,
       :password => 'password', :password_confirmation => 'password')
     customer.profile.update(user_data)
     customer.confirm
