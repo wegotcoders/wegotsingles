@@ -14,7 +14,7 @@ class Customer < ActiveRecord::Base
   # 1)SQL:
   # SELECT * FROM messages where messages.receiver_id=#{self.id}
   # 2) Create models for 
-  has_many :received_messages, class: 'Message', foreign_key: :receiver_id
+  has_many :received_messages, class_name: 'Message', foreign_key: :receiver_id
 
   ## Messages sent by me
   has_many :sent_messages, class_name: 'Message', foreign_key: :sender_id

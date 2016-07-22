@@ -11,7 +11,6 @@ class Message < ActiveRecord::Base
 
 	# Receiver
 	belongs_to :receiver, class_name: 'Customer', foreign_key: :receiver_id
-
 	belongs_to :replied_to, class_name: 'Message', foreign_key: :replied_to_id
 
 	has_one :reply, class_name: 'Message', foreign_key: :replied_to_id
