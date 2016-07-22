@@ -1,11 +1,14 @@
 <div class="profile-display column-5 offset-1">
 	<h1><%= @profile.name.capitalize %>'s Profile</h1>
 
-  <ul id="profile-display">
-    <% for attribute in @profile.display_attribute_keys %>
-      <li>
-        <%= attribute.humanize %>:
+  <% if current_customer.profile.id == @profile.id %>
+	  <span><a href="/profiles/<%= @profile.id %>/edit">Edit</a></span>
+  <% end %>
 
+	<dl id="profile-display">
+	  <% for attribute in @profile.display_attribute_keys %>
+	    <dt><%= attribute.humanize %></dt>
+	    <dd>
         <% if attribute == "religious_beliefs" %>
           <%= display_attribute(religious_beliefs, @profile.religious_beliefs) %>
         <% elsif attribute == "height" %>
@@ -13,9 +16,9 @@
         <% else %>
           <%= @profile.attributes[attribute].to_s %>
         <% end %>
-      </li>
-    <% end %>
-  </ul>
+      </dd>
+	  <% end %>
+	</dl>
 </div>
 
 <%= render 'profiles/search' %>
