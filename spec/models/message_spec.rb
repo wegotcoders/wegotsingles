@@ -21,7 +21,6 @@ RSpec.describe Message, type: :model do
 
     describe "replying" do
       before do
-	binding.pry
 	@reply = Message.create!(:sender => @receiver, :content => 'I fancy you',
 	  :replied_to => @message)
 	
@@ -33,16 +32,16 @@ RSpec.describe Message, type: :model do
 	expect(@message.reload.reply).to eq(@reply)
       end
 
-      # describe "history" do
-      #   before do
-      #     @reply_to_reply = Message.create!(:sender => @sender, :content => 'Lets go for a drink',
-      #       :replied_to => @reply)
-      #   end
+       describe "history" do
+	 before do
+	   @reply_to_reply = Message.create!(:sender => @sender, :content => 'Lets go for a drink',
+	     :replied_to => @reply)
+	 end
 
-      #   it "allows the original message to see the entire conversation history" do
-      #     expect(@message.reload.history).to eq([@reply, @reply_to_reply])
-      #   end
-      # end
+	 it "allows the original message to see the entire conversation history" do
+	   expect(@message.reload.history).to eq([@reply, @reply_to_reply])
+	 end
+       end
     end
   end
 end

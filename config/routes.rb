@@ -4,9 +4,9 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
+    resources :messages, except: [:destroy, :edit]
   end
 
-  resources :messages, except: [:destroy, :edit]
 
 
   devise_for :customers
