@@ -14,8 +14,26 @@
   <%= f.label :desires %>
   <%= f.text_area :desires %>
 
-  <%= f.check_box :smoker %>  
+  <%= f.check_box :smoker %>
   <%= f.label :smoker, "Smoker" %>
+
+  <hr>
+    <select id="Industry" name="profile[industry]">
+    <option value="" style="display:none">Choose Industry</option>
+    <option value="aerospace">Aerospace</option>
+    <option value="agriculture">Agriculture</option>
+    <option value="civil_service">Civil Service</option>
+    <option value="construction">Construction</option>
+    <option value="defense">Defense</option>
+    <option value="education">Education</option>
+    <option value="energy">Energy</option>
+    <option value="health">Health</option>
+    <option value="industrial">Industrial</option>
+    <option value="technology">Technology</option>
+  </select>
+
+  <%= f.label :occupation %>
+  <%= f.text_field :occupation %>
 
   <%= f.submit %>
 
