@@ -5,7 +5,7 @@
   <%end%>
 
   <% if current_customer.profile.id == @profile.id %>
-    <span><a href="/profiles/<%= @profile.id %>/edit">Edit</a></span>
+    <%= link_to "Edit", edit_profile_path(@profile), method: :get, class: 'btn-info' %></li>
   <% end %>
 
 	<dl id="profile-display">
@@ -23,6 +23,5 @@
 	  <% end %>
 	</dl>
 </div>
-<p>You weigh <%= @profile.weight %></p>
 
 <%= render 'profiles/search' %>
