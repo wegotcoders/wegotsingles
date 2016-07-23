@@ -33,9 +33,10 @@
       </nav>   
     </header>
 
-    <main class="wrapper">
-    
-      <%= render "layouts/alerts" %>
+    <main class="container=fluid">
+      <div class="alerts column-sm-2 offset-10"
+        <%= render "layouts/alerts" %>
+      </div>
 	    <%= yield %>
     
     </main>
