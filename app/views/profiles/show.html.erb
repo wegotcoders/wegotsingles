@@ -1,27 +1,34 @@
-<div class="profile-display column-5 offset-1">
-<h1><%= @profile.name.capitalize %>'s Profile</h1>
-  <% @profile.images.each do |image| %>
-    <%= image_tag(image.url, alt: "Profile Image") %>
-  <%end%>
+<div class="profile-display row">
+  <div class="col-sm-6">
+    <div class="p-2">
+      <h1><span class="f-pink"><%= @profile.name.capitalize %>'s</span> Profile</h1>
+      <hr>
+      <% if current_customer.profile.id == @profile.id %>
+        <%= link_to "Edit", edit_profile_path(@profile), method: :get, class: 'btn btn-xs btn-info' %>
+      <% end %>
+      
+      <% @profile.images.each do |image| %>
+        <%= image_tag(image.url, alt: "Profile Image") %>
+      <%end%>
 
-  <% if current_customer.profile.id == @profile.id %>
-    <%= link_to "Edit", edit_profile_path(@profile), method: :get, class: 'btn-info' %></li>
-  <% end %>
 
-	<dl id="profile-display">
-	  <% for attribute in @profile.display_attribute_keys %>
-	    <dt><%= attribute.humanize %></dt>
-	    <dd>
-        <% if attribute == "religious_beliefs" %>
-          <%= display_attribute(religious_beliefs, @profile.religious_beliefs) %>
-        <% elsif attribute == "height" %>
-          <%= @profile.attributes[attribute].to_s %> cm <%= @profile.imperial_height %>
-        <% else %>
-          <%= @profile.attributes[attribute].to_s %>
-        <% end %>
-      </dd>
-	  <% end %>
-	</dl>
-</div>
+    	<dl id="profile-display" class="m-t-1">
+    	  <% for attribute in @profile.display_attribute_keys %>
+    	    <dt class="m-t-1"><%= attribute.humanize %></dt>
+    	    <dd class="p-1">
+            <% if attribute == "religious_beliefs" %>
+              <%= display_attribute(religious_beliefs, @profile.religious_beliefs) %>
+            <% elsif attribute == "height" %>
+              <%= @profile.attributes[attribute].to_s %> cm <%= @profile.imperial_height %>
+            <% else %>
+              <%= @profile.attributes[attribute].to_s %>
+            <% end %>
+          </dd>
+    	  <% end %>
+    	</dl>
+    </div>
+  </div>
 
-<%= render 'profiles/search' %>
+  <div class="search-filter col-sm-4 offset-1 p-2 b-1-w">
+    <h2 class="center">Search for Matches</h2>
+    <%= render 'profiles/search' %>

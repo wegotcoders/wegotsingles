@@ -1,27 +1,25 @@
-<div class="column-4 offset-1 m-b-2">
-    <h1>Find your match!</h1>
+    <%= form_tag(search_profiles_path, method: "get", class: "center") do %>
+      <p class="m-t-1">Gender</p>
 
-      <%= form_tag(search_profiles_path, method: "get") do %>
-        <h2>Search by gender:</h2>
+      <%= radio_button_tag(:gender, "male") %>
+      <%= label_tag(:gender_male, "Male", class: 'm-r-2') %>
+      <%= radio_button_tag(:gender, "female") %>
+      <%= label_tag(:gender_female, "Female", class: 'm-r-2') %>
+      <%= radio_button_tag(:gender, "other") %>
+      <%= label_tag(:gender_other, "Other", class: 'm-r-2') %>
 
-        <%= radio_button_tag(:gender, "male") %>
-        <%= label_tag(:gender_male, "Male", class: 'm-r-2') %>
-        <%= radio_button_tag(:gender, "female") %>
-        <%= label_tag(:gender_female, "Female", class: 'm-r-2') %>
-        <%= radio_button_tag(:gender, "other") %>
-        <%= label_tag(:gender_other, "Other", class: 'm-r-2') %>
+      <p class="m-t-1">Within</p>
 
-        <h2>Select proximity to you</h2>
+      <%= radio_button_tag(:distance, "5") %>
+      <%= label_tag(:distance_5, "5km", class: 'm-r-2') %>
+      <%= radio_button_tag(:distance, "15") %>
+      <%= label_tag(:distance_15, "15km", class: 'm-r-2') %>
+      <%= radio_button_tag(:distance, "150") %>
+      <%= label_tag(:distance_150, "150km", class: 'm-r-2') %>
 
-        <%= radio_button_tag(:distance, "5") %>
-        <%= label_tag(:distance_5, "Within 5km", class: 'm-r-2') %>
-        <%= radio_button_tag(:distance, "15") %>
-        <%= label_tag(:distance_15, "Within 15km", class: 'm-r-2') %>
-        <%= radio_button_tag(:distance, "150") %>
-        <%= label_tag(:distance_150, "Within 150km", class: 'm-r-2') %>
-
-        <div>
-          <%= submit_tag("Search", {id: 'search', class: 'wrapper btn brr-5 m-1'}) %>
-        </div>  
-      <% end %>
-</div>
+      <div>
+        <%= submit_tag("Search", {id: 'search', class: 'btn'}) %>
+      </div>  
+    <% end %>
+  </div> <!-- closes bootstrap div from previous page -->
+</div> <!-- closes row div -->

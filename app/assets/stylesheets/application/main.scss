@@ -7,17 +7,23 @@ html {
 }
 
 main {
-	background-color: rgba(204, 204, 255, 0.5);
+	background-color: rgba(204, 204, 255, 0.7);
 
 }
 
-#search {
-	background-color: rgb(255, 0, 102);
-	margin: 0;
-	margin-top: 1em;
-	border: none;
-}
 
-#edit {
+.search-filter {
+
+	#search {
+		background-color: rgb(255, 0, 102);
+		margin: 0;
+		margin-top: 1em;
+		border: none;
+	}
+
+	p {
+		color: rgb(255, 0, 102);
+		font-weight: bold;
+	}
 
 }
