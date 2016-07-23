@@ -1,6 +1,6 @@
 <div class="profile-display row">
-  <div class="col-sm-6">
-    <div class="p-2">
+  <div class="translucent-bg col-sm-8 col-sm-offset-2 p-2">
+    <div class="col-sm-6">
       <h1><span class="f-pink"><%= @profile.name.capitalize %>'s</span> Profile</h1>
       <hr>
       <% if current_customer.profile.id == @profile.id %>
@@ -8,7 +8,7 @@
       <% end %>
       
       <% @profile.images.each do |image| %>
-        <%= image_tag(image.url, alt: "Profile Image") %>
+        <%= image_tag(image.url, alt: "Profile Image", class: "img-sm b-th-b") %>
       <%end%>
 
 
@@ -27,8 +27,11 @@
     	  <% end %>
     	</dl>
     </div>
-  </div>
 
-  <div class="search-filter col-sm-4 offset-1 p-2 b-1-w">
-    <h2 class="center">Search for Matches</h2>
-    <%= render 'profiles/search' %>
+    <div class="search-filter col-sm-5 col-sm-offset-1 m-t-3 b-1-w p-b-2">
+      <h2 class="center">Search for Matches</h2>
+      <%= render 'profiles/search' %>
+
+    </div>
+  </div>
+</div>
