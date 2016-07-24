@@ -11,7 +11,6 @@
         <%= image_tag(image.url, alt: "Profile Image", class: "img-sm b-th-b") %>
       <%end%>
 
-
     	<dl id="profile-display" class="m-t-1">
     	  <% for attribute in @profile.display_attribute_keys %>
     	    <dt class="m-t-1"><%= attribute.humanize %></dt>
@@ -27,7 +26,7 @@
     	  <% end %>
     	</dl>
     </div>
-
+    
     <div class="search-filter col-sm-5 col-sm-offset-1 m-t-3 b-1-w p-b-2">
       <h2 class="center">Search for Matches</h2>
       <%= render 'profiles/search' %>
