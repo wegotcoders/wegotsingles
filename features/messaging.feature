@@ -8,11 +8,22 @@ Feature: Messaging
 
   Scenario: A customer can view inbox
     Then he is redirected to his inbox
+
+  @javascript
   Scenario: A customer can create a message
+    When he clicks new message
+    And he writes a message
+    And he clicks on a receiver
+    And he presses send
+    Then the message appears in his outbox
+    And the message appears in the receiver's inbox
+  
+  Scenario: A customer can create a message without javascript
     When he clicks new message
     And he writes a message
     And he selects a receiver
     And he presses send
     Then the message appears in his outbox
     And the message appears in the receiver's inbox
+
   Scenario: A customer can reply to a message

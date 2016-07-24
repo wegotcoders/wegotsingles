@@ -18,6 +18,10 @@ gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave'
 gem 'mini_magick', '~> 3.8.0'
 gem 'fog', '~> 1.34.0'
 
+group :test do
+  gem 'selenium-webdriver'
+end
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'

@@ -15,6 +15,12 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
+    @profile_ids = Profile.all.map do |profile| 
+      { id: "#customer-#{profile.customer.id}",
+	customer_id: profile.customer.id,
+	name: profile.name
+      }
+    end.to_json
   end
 
   def create
@@ -30,7 +36,8 @@ class MessagesController < ApplicationController
 
   private
     def message_params
-      params.require(:message).permit(:receiver_id, :sender_id, :content, :replied_to_id, :read, :visible)
+      params.require(:message).permit(:receiver_id, :sender_id, :content, 
+				      :replied_to_id, :read, :visible)
     end
 
     def set_message
