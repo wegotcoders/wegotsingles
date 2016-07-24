@@ -6,18 +6,21 @@ postcodes = %w(EN63AQ EN93TP EN110HD EN64NW EN55SR EN80NQ EN111HP EN36PX EN37SG 
 users = []
 
 industries=[
-    "aerospace"
-    "agriculture"
-    "civil_service"
-    "construction"
-    "defense"
-    "education"
-    "energy"
-    "health"
-    "industrial"
-    "technology"]
+    ["aerospace", ["astronaut", "rocket engineer", "fighter pilot", "motion design"]],
+    ["agriculture", ["farmer", "broker", "shearer"]],
+    ["civil_service", ["accountant", "paper-pusher"]],
+    ["construction", ["builder", "project manager"]],
+    ["defense", ["commander", "submarine navigator"]],
+    ["education", ["teacher", "principal"]],
+    ["energy", ["renewables marketer", "oil and gas broker"]],
+    ["health", ["doctor", "nurse", "orthopedic surgeon", "psychiatrist"]],
+    ["industrial", ["chemical engineer"]],
+    ["technology", ["coder", "software engineer", "senior developer"]],
+  ]   
 
-20.times do users << {
+20.times do 
+  i = (0..9).to_a.sample
+  users << {
   biography: Faker::Lorem.paragraph,
   drinks: [true, false].sample,
   weight: (40..140).to_a.sample,
@@ -27,9 +30,10 @@ industries=[
   name: Faker::Name.first_name,
   gender: genders.sample,
   smoker: [true, false].sample,
-  # occupation: [].sample
-  industry: industries.sample
+  industry: industries[i][0],
+  occupation: industries[i][1].sample
   }
+
 end
 
 users.each_with_index do |user_data, i|

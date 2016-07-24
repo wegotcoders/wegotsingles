@@ -1,0 +1,17 @@
+<h1>Your Messages</h1>
+
+<%= link_to "New message", new_profile_message_path(@profile) %>  | 
+<%= link_to "Outbox", outbox_profile_messages_path(@profile) %>
+<% @messages.each do |message|%>
+  <section>
+    <p>
+      <%= message.content %>
+    </p>
+    <p>
+      <small><%= message.sender.profile.name %></small>
+    </p>
+    <p>
+      Sent at: <small><%= message.created_at %></small>
+    </p>
+  </section>
+<% end %>

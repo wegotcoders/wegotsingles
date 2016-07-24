@@ -1,14 +1,23 @@
-<div class="column-5 offset-1">
+<div class = "row">
+	<div class="col-sm-6">
 
-  <h1 id="search-results" class="f-2">Your Matches!</h1>
+	  <h1 id="search-results" class="f-2 center f-white">Your Matches</h1>
 
-  <ol class="list-0 m-2">
-    <% @results.each do |result| %>
-      <li class="column-1 offset-1">
-    		<a href="/profiles/<%=result.id%>"><%= result.name %></a>
-      </li>
-    <% end %>
-  </ol>
-</div>  
+	  <ol class="list-0 m-2">
+	    <% @results.each do |result| %>
+	      <li class="col-sm-4">
+	      	<a href="/profiles/<%=result.id%>">
+						<%= image_tag(result.images.first, alt: "Profile Image", class: "img-sm") %>
+		    		<p><%= result.name %>  <%= result.postcode[0..3]%></p>
+		    	</a>
+	      </li>
+	    <% end %>
+	  </ol>
+	</div>  
 
-<%= render 'profiles/search' %>
+  <div class="search-filter col-sm-4 col-sm-offset-1 m-t-2 b-1-w p-b-2">
+    <h2 class="center">Filter your matches</h2>
+    <%= render 'profiles/search' %>
+  </div>
+</div>
+

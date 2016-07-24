@@ -1,0 +1,32 @@
+<script>
+  var profileIds = <%= @profile_ids.html_safe %>;
+</script>
+<h1> New Message</h1>
+<ul id="allProfiles" class="hidden">
+  <% Profile.all.each do |profile| %>
+    <a id="customer-<%= profile.customer.id %>" href="#">
+      <%= profile.name %>
+    </a>
+  <% end %>
+</ul>
+
+<%= form_for [@profile, @message] do |f| %>
+  <%= f.hidden_field :sender_id, value: current_customer.id %>
+
+  <fieldset id="profileDropDown">
+    <%= f.label :receiver_id, "Receiver" %>
+    <%= f.select :receiver_id, options_for_select(Profile.all.collect{|p| [p.name, p.customer.id]}) %>
+  </fieldset>
+  
+  <fieldset>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </fieldset>
+
+
+  <fieldset>
+    <%= f.submit "Send", class: "btn mb-1" %>
+  </fieldset>
+<% end %>
+
+<br>

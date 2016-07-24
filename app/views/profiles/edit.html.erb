@@ -1,68 +1,103 @@
-<h1> Edit Profile</h1>
+<div class="profile-display row">
+  <div class="translucent-bg col-sm-8 col-sm-offset-2 p-2">
+    <div class="col-sm-6 col-sm-offset-3">      
 
-<%= form_for @profile do |f| %>
-  <fieldset class="form-group">
-    <%= f.label :biography %>
-    <%= f.text_area :biography, class: "form-control" %>
+      <h1 class="center"> Edit Profile</h1>
 
-    <%= f.label :weight %>
-    <%= f.number_field :weight, class: "form-control" %>
+      <%= form_for @profile do |f| %>
+          
+          <fieldset>
+            <%= f.label :biography %>
+            <%= f.text_area :biography, class: "form-control m-b-1 m-b-1" %>
+          </fieldset>
 
-    <%= f.label :height %>
-    <%= f.number_field :height %>
 
-    <%= f.label :drinks, "Do you drink?" %>
-    <%= f.check_box :drinks, class: "form-control" %>
+          <fieldset>          
+          <%= f.label :height %>
+          <%= f.number_field :height, class: "form-control m-b-1" %>
+          </fieldset>
 
-    <%= f.label :desires %>
-    <%= f.text_area :desires, class: "form-control" %>
+          <fieldset>
+          <%= f.label :desires %>
+          <%= f.text_area :desires, class: "form-control m-b-1" %>
+          </fieldset>
 
-    <%= f.label :smoker, "Smoker" %>
-    <%= f.check_box :smoker, class: "form-control" %>
+          <fieldset>
+            <%= f.label :drinks, "Do you drink?" %>
+            <%= f.check_box :drinks %>
+          </fieldset>
 
-    <select id="Industry" name="profile[industry]" class="form-control">
-      <option value="" style="display:none">Choose Industry</option>
-      <option value="aerospace">Aerospace</option>
-      <option value="agriculture">Agriculture</option>
-      <option value="civil_service">Civil Service</option>
-      <option value="construction">Construction</option>
-      <option value="defense">Defense</option>
-      <option value="education">Education</option>
-      <option value="energy">Energy</option>
-      <option value="health">Health</option>
-      <option value="industrial">Industrial</option>
-      <option value="technology">Technology</option>
-    </select>
+          <fieldset>
+          <%= f.label :smoker, "Smoker" %>
+          <%= f.check_box :smoker%>
+          </fieldset>
 
-    <%= f.label :occupation %>
-    <%= f.text_field :occupation, class: "form-control" %>
+          <fieldset>
+            <label for="Industry">Industry</label>          
+            <select id="Industry" name="profile[industry]" class="form-control m-b-1">
+              <option value="" style="display:none">Choose Industry</option>
+              <option value="aerospace">Aerospace</option>
+              <option value="agriculture">Agriculture</option>
+              <option value="civil_service">Civil Service</option>
+              <option value="construction">Construction</option>
+              <option value="defense">Defense</option>
+              <option value="education">Education</option>
+              <option value="energy">Energy</option>
+              <option value="health">Health</option>
+              <option value="industrial">Industrial</option>
+              <option value="technology">Technology</option>
+            </select>
 
-    <p>Unit: <%= select_tag("weight_unit" , options_for_select(['Metric', "Imperial"], "Metric") ) %> </p>
+            <%= f.label :occupation %>
+            <%= f.text_field :occupation, class: "form-control m-b-1", placeholder: "Occupation" %>
+          </fieldset>  
 
-    <div id="imperial" class="form-control">
-      <dl>
-      <dt> Stones: </dt>
-      <input type= "number" name="stones" min="0" max="30">
-      <dt>Pounds: </dt>
-      <input type= "number" name="pounds" min="0" max="13">
-      </dl>
+          <fieldset>
+            <p>Weight:</p>
+            <p>Unit: <%= select_tag("weight_unit" , options_for_select(['Metric', "Imperial"], "Metric") ) %> </p>
+
+            <div id="imperial" class="m-b-1">
+              <dl>
+                <dt> Stones:
+                  <input type= "number" name="stones" min="0" max="30" class="form-control">
+                </dt>  
+                <dt>Pounds:
+                  <input type= "number" name="pounds" min="0" max="13" class="form-control">
+                </dt>  
+              </dl>
+            </div>
+ 
+            <div id="metric" class="m-b-1">
+              <dl>
+              <dt>Kilograms:</dt>
+              <input type="number" name="weight" min="0" max="200" class="form-control">
+              </dl>
+            </div>
+          </fieldset>
+
+        <fieldset>
+          <%= f.label :religious_beliefs %>
+          <%= f.select :religious_beliefs, options_for_select(religious_beliefs, get_pre_selected_option("religious_beliefs")), {}, {class: "form-control m-b-1"} %>
+        </fieldset>
+
+        <fieldset>
+          <%= f.label :ethnicity %>
+          <%= f.select :ethnicity, ethnicity_options, {id: "Ethnicity", name: "profile[ethnicity]"}, {class: "form-control m-b-1"} %>
+        </fieldset>
+
+        <fieldset>
+          <%= f.label :education %>          
+          <%= f.select :education, education_options, {id: "Education", name: "profile[education]"}, {class: "form-control m-b-1"} %>
+        </fieldset>  
+
+        <fieldset>
+          <%= f.label :images %>
+          <%= f.file_field :images, multiple: true, accept: "image/jpeg,image/gif,image/png", class: "form-control m-b-1" %>
+        </fieldset>
+
+          <%= f.submit class: 'btn btn-default' %>
+      
+      <% end %>
     </div>
-
-    <div id="metric" class="form-control">
-      <dl>
-      <dt>Kilograms:</dt>
-      <input type="number" name="weight" min="0" max="200">
-      </dl>
-    </div>
-
-    <%= f.label :religious_beliefs %>
-    <%= f.select :religious_beliefs,
-      options_for_select(religious_beliefs,
-       get_pre_selected_option("religious_beliefs")) %>
-
-    <%= f.select(:ethnicity, ethnicity_options, id: "Ethnicity", name: "profile[ethnicity]") %>
-    <%= f.select(:education, education_options, id: "Education", name: "profile[education]") %>
-
-    <%= f.submit %>
-  </fieldset>
-<% end %>
+  </div>
+</div>

@@ -29,7 +29,7 @@ Given(/^Jess is looking at her profile page$/) do
 end
 
 When(/^they select to search within (\d+)km of themselves$/) do |arg1|
-  choose("Within #{arg1}km")
+  choose("#{arg1}km")
 end
 
 When(/^they press distance search button$/) do
