@@ -14,7 +14,6 @@
   <section class="column-5">
     <%= form_for [@profile, @message] do |f| %>
       <%= f.hidden_field :sender_id, value: current_customer.id %>
-
       <fieldset id="profileDropDown">
 	<%= f.label :receiver_id, t("activerecord.attributes.message.receiver_id")%>
 	<%= f.select :receiver_id, options_for_select(Profile.all.collect{|p| [p.name, p.customer.id]}) %>
