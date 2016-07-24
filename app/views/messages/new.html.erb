@@ -2,31 +2,36 @@
   var profileIds = <%= @profile_ids.html_safe %>;
 </script>
 <h1> New Message</h1>
-<ul id="allProfiles" class="hidden">
-  <% Profile.all.each do |profile| %>
-    <a id="customer-<%= profile.customer.id %>" href="#">
-      <%= profile.name %>
-    </a>
-  <% end %>
-</ul>
+<div class="row">
+  <ul id="allProfiles" class="hidden column-2">
+    <strong>Select a recipient</strong>
+    <% Profile.all.each do |profile| %>
+      <li>
+	<%= link_to profile.name, "#", class: "profile-links", id: "customer-#{profile.customer.id}" %>
+      </li>
+    <% end %>
+  </ul>
+  <section class="column-5">
+    <%= form_for [@profile, @message] do |f| %>
+      <%= f.hidden_field :sender_id, value: current_customer.id %>
 
-<%= form_for [@profile, @message] do |f| %>
-  <%= f.hidden_field :sender_id, value: current_customer.id %>
+      <fieldset id="profileDropDown">
+	<%= f.label :receiver_id, t("activerecord.attributes.message.receiver_id")%>
+	<%= f.select :receiver_id, options_for_select(Profile.all.collect{|p| [p.name, p.customer.id]}) %>
+      </fieldset>
+      
+      <fieldset>
+	<p>
+	  <%= f.label :content, t("activerecord.attributes.message.content") %>
+	</p>
+	<%= f.text_area :content, rows: 20, cols: 40 %>
+      </fieldset>
 
-  <fieldset id="profileDropDown">
-    <%= f.label :receiver_id, "Receiver" %>
-    <%= f.select :receiver_id, options_for_select(Profile.all.collect{|p| [p.name, p.customer.id]}) %>
-  </fieldset>
-  
-  <fieldset>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-  </fieldset>
 
-
-  <fieldset>
-    <%= f.submit "Send", class: "btn mb-1" %>
-  </fieldset>
-<% end %>
-
+      <fieldset>
+	<%= f.submit "Send", class: "btn mb-1" %>
+      </fieldset>
+    <% end %>
+  </section>
+</div>
 <br>

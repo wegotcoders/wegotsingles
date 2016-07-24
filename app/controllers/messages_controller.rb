@@ -6,9 +6,6 @@ class MessagesController < ApplicationController
     @messages = @profile.customer.received_messages
   end
 
-  def show
-  end
-
   def outbox
     @messages = @profile.customer.sent_messages
   end
@@ -32,6 +29,11 @@ class MessagesController < ApplicationController
       flash[:error] = "Unable to send message"
       render :new
     end
+  end
+
+  def reply
+    @replied_to = Message.find(params[:id])
+    @message = Message.new
   end
 
   private

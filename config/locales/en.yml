@@ -21,3 +21,9 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      profile:
+      message:
+        content: "Content"
+        receiver_id: "Receiver"

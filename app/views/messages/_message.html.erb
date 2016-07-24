@@ -1,0 +1,24 @@
+<li>
+  <section>
+    <p>
+      <%= message.content %>
+    </p>
+    <p>
+      <small>From: <%= message.sender.profile.name %></small>
+    </p>
+    <p>
+      <small>Sent at: <%= message.created_at %></small>
+    </p>
+    <% if message.receiver == current_customer %>
+      <p>
+	<%= link_to "Reply", reply_profile_message_path(@profile, message) %>
+      </p>
+    <% end %>
+    <hr>
+    <% if message.reply.present? %>
+      <ul class="m-r-1 list-0">
+	<%= render partial: "messages/message", locals: { message: message.reply } %>
+      </ul>
+    <% end %>
+  </section>
+</li>

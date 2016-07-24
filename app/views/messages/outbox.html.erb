@@ -2,12 +2,12 @@
 
 <%= link_to "New message", new_profile_message_path(@profile) %>
 <% @messages.each do |message| %>
-  <section>
+  <section class="b-white b-2-bottom b-solid b-0-top b-0-right b-0-left">
     <p>
       <%= message.content %>
     </p>
     <p>
-      <small><%= message.receiver.profile.name %></small>
+      <small>Sent to: <%= message.receiver.profile.name %></small>
     </p>
     <p>
       Sent at: <small><%= message.created_at %></small>

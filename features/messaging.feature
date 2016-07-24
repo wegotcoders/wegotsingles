@@ -27,3 +27,9 @@ Feature: Messaging
     And the message appears in the receiver's inbox
 
   Scenario: A customer can reply to a message
+    When he receives a message
+    And he clicks the reply button
+    And he writes a message
+    And he presses send
+    Then the message should appear beneath the original message
+    And the message should appear in the original sender's inbox
