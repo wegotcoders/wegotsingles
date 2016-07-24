@@ -2,9 +2,10 @@ class Profile < ActiveRecord::Base
   belongs_to :customer
   geocoded_by :postcode
   after_validation :geocode
+  mount_uploaders :images, ImageUploader, s3_protocol: :https
 
   def display_attribute_keys
-    self.attributes.keys.to_a - ['id', 'name', 'created_at', 'updated_at', 'customer_id', 'latitude', 'longitude', 'weight_unit']
+    self.attributes.keys.to_a - ['id', 'name', 'created_at', 'updated_at', 'customer_id', 'latitude', 'longitude', 'weight_unit', 'images']
   end
 
   after_create :set_star_sign

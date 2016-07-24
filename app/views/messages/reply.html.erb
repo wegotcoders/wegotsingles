@@ -1,0 +1,38 @@
+<h1>Send a Reply</h1>
+
+<section class="b-white b-2-bottom b-solid b-0-top b-0-right b-0-left">
+  <p>
+    <%= @replied_to.content %>
+  </p>
+  <p>
+    <small>From: <%= @replied_to.sender.profile.name %></small>
+  </p>
+  <p>
+    <small>Sent at: <%= @replied_to.created_at %></small>
+  </p>
+</section>
+
+
+<%= form_for [@profile, @message] do |f| %>
+  <%= f.hidden_field :replied_to_id, value: @replied_to.id %>
+  <%= f.hidden_field :sender_id, value: current_customer.id %>
+
+  <fieldset>
+    <%= f.label :receiver_id, t("activerecord.attributes.message.receiver_id")%>
+    <%= @replied_to.sender.profile.name %>
+    <%= f.hidden_field :receiver_id, value: @replied_to.sender.id %>
+  </fieldset>
+  
+  <fieldset>
+    <p>
+      <%= f.label :content, t("activerecord.attributes.message.content") %>
+    </p>
+    <%= f.text_area :content, rows: 20, cols: 40 %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.submit "Send", class: "btn mb-1" %>
+  </fieldset>
+<% end %>
+
+<br>

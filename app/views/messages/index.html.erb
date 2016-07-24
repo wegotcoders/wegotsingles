@@ -1,0 +1,9 @@
+<h1>Your Messages</h1>
+
+<%= link_to "New message", new_profile_message_path(@profile) %>  | 
+<%= link_to "Outbox", outbox_profile_messages_path(@profile) %>
+<ul class="list-0">
+  <% @messages.each do |message|%>
+    <%= render partial: "messages/message", locals: { message: message } %>
+  <% end %>
+</ul>

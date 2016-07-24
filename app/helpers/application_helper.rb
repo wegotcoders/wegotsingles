@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+  def get_pre_selected_option(property)
+    (params[:search] && params[:search]["#{property}"] && params[:search]["#{property}"] != "") ? params[:search]["#{property}"].to_i : nil
+  end
+
+  def display_attribute(_method, value)
+    _method.select{ |attribute| attribute[1] == value }[0][0] unless value.nil?
+  end
+
   def ethnicity_options
     options_for_select([
       ['Choose Ethnicity...', nil],
@@ -13,14 +21,6 @@ module ApplicationHelper
 
   def industries
     industries = ["agriculture", "civil_service", "construction", "defense", "education", "energy", "health", "industrial", "technology" ]
-  end
-
-  def get_pre_selected_option(property)
-    (params[:search] && params[:search]["#{property}"] && params[:search]["#{property}"] != "") ? params[:search]["#{property}"].to_i : nil
-  end
-
-  def display_attribute(_method, value)
-    _method.select{ |attribute| attribute[1] == value }[0][0]
   end
 
   def religious_beliefs
