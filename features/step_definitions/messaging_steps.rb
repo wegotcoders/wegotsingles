@@ -7,8 +7,11 @@ When(/^he clicks new message$/) do
 end
 
 When(/^he writes a message$/) do
-  save_and_open_page
   fill_in "Content", with: (@content = Faker::Lorem.paragraph)
+end
+
+When(/^he clicks on a receiver$/) do
+  click_on @profile_4.name
 end
 
 When(/^he selects a receiver$/) do
@@ -24,7 +27,7 @@ Then(/^he is redirected to his inbox$/) do
 end
 
 Then(/^the message appears in his outbox$/) do
-  visit outbox_profile_messages_path(@profile_1)
+  click_on "Outbox"
   expect(page).to have_content(@content)
 end
 
