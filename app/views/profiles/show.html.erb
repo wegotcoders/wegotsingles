@@ -1,28 +1,36 @@
-<div class="profile-display column-5 offset-1">
-<h1><%= @profile.name.capitalize %>'s Profile</h1>
-  <% @profile.images.each do |image| %>
-    <%= image_tag(image.url, alt: "Profile Image") %>
-  <%end%>
+<div class="profile-display row">
+  <div class="translucent-bg col-sm-8 col-sm-offset-2 p-2">
+    <div class="col-sm-6">
+      <h1><span class="f-pink"><%= @profile.name.capitalize %>'s</span> Profile</h1>
+      <hr>
+      <% if current_customer.profile.id == @profile.id %>
+        <%= link_to "Edit", edit_profile_path(@profile), method: :get, class: 'btn btn-xs btn-info' %>
+      <% end %>
+      
+      <% @profile.images.each do |image| %>
+        <%= image_tag(image.url, alt: "Profile Image", class: "img-sm b-th-b") %>
+      <%end%>
 
-  <% if current_customer.profile.id == @profile.id %>
-    <span><a href="/profiles/<%= @profile.id %>/edit">Edit</a></span>
-  <% end %>
+    	<dl id="profile-display" class="m-t-1">
+    	  <% for attribute in @profile.display_attribute_keys %>
+    	    <dt class="m-t-1"><%= attribute.humanize %></dt>
+    	    <dd class="p-1">
+            <% if attribute == "religious_beliefs" %>
+              <%= display_attribute(religious_beliefs, @profile.religious_beliefs) %>
+            <% elsif attribute == "height" %>
+              <%= @profile.attributes[attribute].to_s %> cm <%= @profile.imperial_height %>
+            <% else %>
+              <%= @profile.attributes[attribute].to_s %>
+            <% end %>
+          </dd>
+    	  <% end %>
+    	</dl>
+    </div>
+    
+    <div class="search-filter col-sm-5 col-sm-offset-1 m-t-3 b-1-w p-b-2">
+      <h2 class="center">Search for Matches</h2>
+      <%= render 'profiles/search' %>
 
-	<dl id="profile-display">
-	  <% for attribute in @profile.display_attribute_keys %>
-	    <dt><%= attribute.humanize %></dt>
-	    <dd>
-        <% if attribute == "religious_beliefs" %>
-          <%= display_attribute(religious_beliefs, @profile.religious_beliefs) %>
-        <% elsif attribute == "height" %>
-          <%= @profile.attributes[attribute].to_s %> cm <%= @profile.imperial_height %>
-        <% else %>
-          <%= @profile.attributes[attribute].to_s %>
-        <% end %>
-      </dd>
-	  <% end %>
-	</dl>
+    </div>
+  </div>
 </div>
-<p>You weigh <%= @profile.weight %></p>
-
-<%= render 'profiles/search' %>

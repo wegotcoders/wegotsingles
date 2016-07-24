@@ -9,36 +9,40 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   </head>
-  <body class="wrapper container">
+  <body>
     <header>
-      <a href="/" class="l-0"><i id="main-logo" >We Got Singles</i></a>
-      <div class="logged_in column-4 offset-9">
-	<% if current_customer %>
-	  <ul class= "list-0">
-	    <li><%= link_to "Inbox", profile_messages_path(current_customer.profile) unless !current_customer %></li>
-	    <li><%= link_to "View Account", edit_customer_registration_path, method: :get, class: 'btn m-1' %></li>
-	    <li><%= link_to "Log Out", destroy_customer_session_path, method: :delete, class: 'btn m-1'%></li>
-	    <li class="f-white f-1 m-1"> Logged in as <%= link_to "#{current_customer.username}", profile_path(current_customer.profile), method: :get, class: 'l-0' %></li>
-	    <% if current_customer.profile.gender == "male" %>
-	      <%= link_to "Become a Premium Member", edit_customer_registration_path, method: :get, class: 'btn m-1' %>
-	    <% end %>	
-	  </ul>			 
-	<% else %>
-	  <ul class="list-0">
-	    <li><%= link_to "Log In", new_customer_session_path, method: :get, class: 'btn m-1' %></li>
-	    <li><%= link_to "Sign Up", new_customer_registration_path, method: :get, class: 'btn m-1' %></li>
-	  </ul>		  			  
-	<% end %>
-      </div>    
+      <nav class="logged_in navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/"><i id="main-logo" >We Got Singles</i></a>
+          </div>        
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_customer %>
+                <li><%= link_to "Inbox", profile_messages_path(current_customer.profile)%></li>
+                <li><%= link_to "View Account", edit_customer_registration_path, method: :get %></li>
+                <li><%= link_to "Log Out", destroy_customer_session_path, method: :delete%></li>
+                <li class="f-white f-1 m-1"> Logged in as <%= link_to "#{current_customer.username}", profile_path(current_customer.profile), method: :get%></li>
+                <% if current_customer.profile.gender == "male" %>
+                  <%= link_to "Become a Premium Member", edit_customer_registration_path, method: :get %>
+                <% end %>    
+            <% else %>
+                <li><%= link_to "Log In", new_customer_session_path, method: :get %></li>
+                <li><%= link_to "Sign Up", new_customer_registration_path, method: :get %></li>
+            <% end %>
+          </ul>             
+      </nav>   
     </header>
 
-    <main class="wrapper">
-      <%= render "layouts/alerts" %>
-	<%= yield %>
+    <main class="container=fluid">
+      <div class="alerts column-sm-2 offset-10"
+        <%= render "layouts/alerts" %>
+      </div>
+	    <%= yield %>
+    
     </main>
+    
     <footer>
       &#169; 2016 We Got Coders
     </footer>
-
   </body>
 </html>

@@ -6,14 +6,26 @@ html {
 	background-color: transparent !important;
 }
 
-main {
-	background-color: rgba(204, 204, 255, 0.5);
-
+body, main {
+	background-color: transparent !important;
 }
 
-#search {
-	background-color: rgb(255, 0, 102);
-	margin: 0;
-	margin-top: 1em;
-	border: none;
+.translucent-bg {
+	background-color: rgba(204, 204, 255, 0.9);
+}
+
+.search-filter {
+
+	#search {
+		background-color: rgb(255, 0, 102);
+		margin: 0;
+		margin-top: 1em;
+		border: none;
+	}
+
+	p {
+		color: rgb(255, 0, 102);
+		font-weight: bold;
+	}
+
 }
