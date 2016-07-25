@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
 
     if @profile.update(profile_params)
       # Yuk!
-      @profile.weight = Profile.calculate_weight(weight_params)
+      @profile.weight = Profile.calculate_weight(params[:weight_params])
       @profile.save!
       flash[:notice] = "Profile was updated"
       redirect_to profile_path(@profile)
@@ -35,7 +35,7 @@ class ProfilesController < ApplicationController
   def profile_params
     params.require(:profile).permit(:biography, :drinks, :weight, :desires,
       :postcode, :name, :gender, :latitude, :longitude,:industry, :occupation,
-      :ethnicity, :religious_beliefs, :height, { images: [] }, :smoker, :education)
+      :ethnicity, :religious_beliefs, :height, { images: [] }, :smoker, :education, :weight_params)
   end
 
   def set_profile
