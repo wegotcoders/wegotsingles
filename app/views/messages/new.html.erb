@@ -1,20 +1,19 @@
 <script>
   var profileIds = <%= @profile_ids.html_safe %>;
 </script>
-<h1> New Message</h1>
+<h1 class="f-white"> New Message</h1>
 <div class="row">
-  <ul id="allProfiles" class="hidden column-2">
+  <ul id="allProfiles" class="hidden list-0 col-sm-2 col-sm-offset-1">
     <strong>Select a recipient</strong>
     <% Profile.all.each do |profile| %>
       <li>
-	<%= link_to profile.name, "#", class: "profile-links", id: "customer-#{profile.customer.id}" %>
+	      <%= link_to profile.name, "#", class: "profile-links", id: "customer-#{profile.customer.id}" %>
       </li>
     <% end %>
   </ul>
   <section class="column-5">
     <%= form_for [@profile, @message] do |f| %>
       <%= f.hidden_field :sender_id, value: current_customer.id %>
-
       <fieldset id="profileDropDown">
 	<%= f.label :receiver_id, t("activerecord.attributes.message.receiver_id")%>
 	<%= f.select :receiver_id, options_for_select(Profile.all.collect{|p| [p.name, p.customer.id]}) %>
